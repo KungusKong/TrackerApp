@@ -1,0 +1,21 @@
+
+<h1>Spell Slots</h1>
+<h3>Max Slots:</h3>
+<button (click)="decreaseMax()" href="" class="mx-1 d-inline btn btn-danger mb-2">-</button>
+<h4 class="d-inline">{{slotsArray.length}}</h4>
+<button (click)="increaseMax()" href="" class="mx-1 d-inline btn btn-success mb-2">+</button>
+
+<br>
+<div class="grid-container">
+    <ul style="list-style-type:none; padding: 0px 0px; display: inline;" class="bg-dark text-light">
+        <li class="col-sm-2 bg-dark text-light" style="padding: 4px;" *ngFor="let slot of slotsArray">
+            <div *ngIf="slot">
+            <app-spellslot [spellSlot]="slot"></app-spellslot>
+            </div>
+        </li>
+    </ul>
+</div>
+<br>
+
+
+

@@ -1,0 +1,17 @@
+<div *ngIf="spellSlot">
+
+	<div  class="card text-light bg-secondary">
+		<h5 class="card-title">Level {{spellSlot.level}}</h5>
+		<label for="use">{{spellSlot.currentAmount}}/
+		<input id="use" type="number" [(ngModel)]="spellSlot.maxAmount" placeholder="name">
+	</label>
+		<div class="btn-toolbar row">
+			<div class="co-md-8 mx-auto">
+			<button (click) = "use()" href="#" class="d-inline btn btn-danger mx-1" >Use</button>
+			<button (click) = "use()" href="#" class="d-inline btn btn-success mx-1" >Rest</button>
+			</div>
+		</div>
+
+	</div>
+
+</div>

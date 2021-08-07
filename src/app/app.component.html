@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a  routerLink="/home" class="navbar-brand" href="#">TrackerProject</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a routerLink="/home" routerLinkActive="active" class="nav-item nav-link" href="#">Home <span class="sr-only"></span></a>
+        <a routerLink="/tracker" routerLinkActive="active" class="nav-item nav-link" href="#">Tracker</a>
+        <a routerLink="/spellslots" routerLinkActive="active" class="nav-item nav-link" href="#">Spell Slots</a>
+        
+      </div>
+    </div>
+  </nav>
+<body class="bg-dark text-light ">
+<div class = "container">
+  
+  <router-outlet></router-outlet>
+</div>
+
+
+</body>

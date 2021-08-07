@@ -1,0 +1,37 @@
+<div *ngIf="item" class="text-dark">
+    <div [class]="item.order == selected ? 'selected': 'bg-secondary'" class="card text-light">
+
+      <div [class]="item.order == selected ? 'selected': 'bg-secondary'" class="card-body text-light">
+
+        <h5 class="card-title">{{item.order}}: <input id="item-name" [(ngModel)]="item.name" placeholder="name"></h5>
+        <div class="padding">
+
+           <label for="item-hp">HP: </label>
+           <input type="number" id="item-hp" [(ngModel)]="item.hp" placeholder="name">
+
+        </div>
+        
+        <div class="padding">
+
+          <label for="item-roll">Initative: </label>
+          <input (change)="sort()" type="number" id="item-roll" [(ngModel)]="item.roll" placeholder="name">
+
+        </div>
+
+        <div class="btn-toolbar">
+
+          <div *ngIf="item.showMove" style="display: inline">
+            <button  (click)="moveUpwards()" href="#" class=" btn btn-primary mar">Move Up</button>
+          </div>
+          
+          <button (click)="dup()" href="#" class=" btn btn-success mar">Duplicate</button>
+          
+          <button (click)="remove()" href="#" class=" btn btn-danger mar">Remove</button>
+
+        </div>
+
+        </div>
+
+    </div>
+
+  </div>

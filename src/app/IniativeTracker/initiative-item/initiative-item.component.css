@@ -1,0 +1,28 @@
+.HP {
+    color: red;
+}
+.padding{
+    padding: 3px 3px; 
+}
+.mar{
+    margin: .1rem .1rem;
+}
+#item-roll{
+    width: 60px;
+}
+#item-hp{
+    width: 100px;
+    color: red;
+
+}
+#item-name{
+    width: 200px;
+}
+.divider{
+    width:5px;
+    height: auto;
+    display: inline-block;
+}
+.selected{
+    background-color: #32a852;
+}

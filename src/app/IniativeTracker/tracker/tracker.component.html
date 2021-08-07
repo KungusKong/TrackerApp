@@ -1,0 +1,20 @@
+<h1>Initiative Tracker</h1>
+<div class="grid-container">
+    <h4 *ngIf="!items[0]">Click add to Start</h4>
+    <button *ngIf="items[0]" (click)="nextTurn()" class = "btn btn-success">Next Turn</button><br>
+    <ul style="list-style-type:none; padding: 0px 0px; display: inline;" class="bg-dark text-light">
+        <li class="col-sm-3 bg-dark text-light" style="padding: 4px;" *ngFor="let nitem of items">
+            <div *ngIf="nitem">
+            <app-initiative-item (duplicate) = "duplicate(nitem.order)" (moveUp)="moveUp(nitem.order)" (sortItems)="sortItems()" 
+            (removeItems)="removeItem(nitem.order)"
+            [selected]="spotInOrder" [item]="nitem"></app-initiative-item>
+            </div>
+        </li>
+        <li>
+            <button (click)="addBlankItem()" href="" class="btn btn-primary mb-2">ADD</button>
+            <br>
+            <button *ngIf="items[0]" (click)="clearItems()" href="" class="btn btn-danger">CLEAR</button>
+        </li>
+    </ul>
+</div>
+
