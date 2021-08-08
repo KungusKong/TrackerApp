@@ -21,6 +21,12 @@ use(){
     alert("Out of level "+this.spellSlot.level+" slots!");
   }
 }
+rest(){
+  this.spellSlot.currentAmount++;
+  if(this.spellSlot.currentAmount> this.spellSlot.maxAmount){
+    this.spellSlot.currentAmount = this.spellSlot.maxAmount;
+  }
+}
 
   constructor() { 
     

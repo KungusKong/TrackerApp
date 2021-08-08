@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { SpellSlotTrackerComponent } from './spell-slot-tracker/spell-slot-tracker.component';
 import { SpellslotComponent } from './spellslot/spellslot.component';
 import { SmallslotComponent } from './smallslot/smallslot.component';
+import { MonsterViewerComponent } from './monster-viewer/monster-viewer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SmallslotComponent } from './smallslot/smallslot.component';
     HomeComponent,
     SpellSlotTrackerComponent,
     SpellslotComponent,
-    SmallslotComponent
+    SmallslotComponent,
+    MonsterViewerComponent
   ],
   imports: [
     BrowserModule,
