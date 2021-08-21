@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark">
+<nav class="navbar navbar-expand-lg navbar-dark border-bottom">
     <a  routerLink="/home" class="navbar-brand" href="#">TrackerProject</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -12,13 +12,22 @@
       </div>
     </div>
   </nav>
-<body class="bg-dark text-light ">
-
-  <div class="float-left"><app-monster-viewer></app-monster-viewer></div>
-  <br>
-  <div class = "container">
   
-    <router-outlet></router-outlet>
+
+  
+<body class="bg-dark text-light">
+  <div class="d-flex" id="wrapper">
+    <div class="border-end bg-dark" id="sidebar-wrapper">
+      <app-monster-viewer></app-monster-viewer>
+
+    </div>
+
+
+    <!--Page Content-->
+    <div class = "container-fluid">
+    
+      <router-outlet></router-outlet>
+    </div>
   </div>
 
 

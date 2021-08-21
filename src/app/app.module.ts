@@ -11,6 +11,7 @@ import { SpellSlotTrackerComponent } from './spell-slot-tracker/spell-slot-track
 import { SpellslotComponent } from './spellslot/spellslot.component';
 import { SmallslotComponent } from './smallslot/smallslot.component';
 import { MonsterViewerComponent } from './monster-viewer/monster-viewer.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MonsterViewerComponent } from './monster-viewer/monster-viewer.componen
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
