@@ -11,7 +11,7 @@ import { Monster_Short } from './monster_short';
 export class MonsterViewerComponent implements OnInit {
 
   constructor(private mService: MonsterFetcherService) {  }
-  items: any[] = [];
+  items: any = [];
   ms : any[] = [];
  
   monsters: Monster_Short[] = [];
@@ -20,12 +20,24 @@ export class MonsterViewerComponent implements OnInit {
     this.getMonsters();
   }
 
-   getMonsters(): void {
+    async getMonsters() {
     //this.monsters = this.mService.getMonstersShort(); 
     //this.mService.getMonstersShort().subscribe(monsters => this.monsters = monsters);
-    this.items= this.mService.getMonstersShort() as never ;
-    this.ms = this.items[1];
+    this.items= await this.mService.getMonstersShort();
+   
+    
+    //this.ms = this.items[1];
   }
+  resolveAfter2Seconds(x:any) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(x);
+      }, 2000);
+    });
+  }
+
+  
+
 
   
 

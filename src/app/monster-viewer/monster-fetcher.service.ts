@@ -9,21 +9,23 @@ import { Observable } from 'rxjs';
 })
 export class MonsterFetcherService {
 
-  items = [];
+  items: any = [];
   apiURL = "https://www.dnd5eapi.co/api/monsters/";
   mShort? : Monster_Short[] = [];
   
   constructor( private http: HttpClient) { }
 
-  getMonstersShort(): any[]{
-    this.http.get(this.apiURL).toPromise().then(data => {console.log(data);
-
-    for(let key in data){
-      if(data.hasOwnProperty(key))
-        this.items.push(data[key as never])
-    }
+  async getMonstersShort(): Promise<any[]>{
+    await this.http.get(this.apiURL).toPromise().then(data => {console.log(data);
+    //this.items = JSON.parse(JSON.stringify(data));
+    this.items = data;
+    //console.log("Service: "+this.items[0]);
+    //return this.items;
   });
-  return this.items;
+    
+  
+  return this.items.results;
+  
     //return null;
   }
 
