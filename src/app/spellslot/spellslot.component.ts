@@ -4,7 +4,7 @@ import { SpellSlot } from '../spellslot';
 @Component({
   selector: 'app-spellslot',
   templateUrl: './spellslot.component.html',
-  styleUrls: ['./spellslot.component.css']
+  styleUrls: ['./spellslot.component.scss']
 })
 export class SpellslotComponent implements OnInit {
 

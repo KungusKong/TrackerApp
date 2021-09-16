@@ -5,7 +5,7 @@ declare var $: any;
 @Component({
   selector: 'app-spell-slot-tracker',
   templateUrl: './spell-slot-tracker.component.html',
-  styleUrls: ['./spell-slot-tracker.component.css']
+  styleUrls: ['./spell-slot-tracker.component.scss']
 })
 export class SpellSlotTrackerComponent implements OnInit {
 

@@ -4,7 +4,7 @@ import { InitiativeItem} from '../InitiativeItem';
 @Component({
   selector: 'app-tracker',
   templateUrl: './tracker.component.html',
-  styleUrls: ['./tracker.component.css']
+  styleUrls: ['./tracker.component.scss']
 })
 export class TrackerComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import { InitiativeItem} from '../InitiativeItem';
 @Component({
   selector: 'app-initiative-item',
   templateUrl: './initiative-item.component.html',
-  styleUrls: ['./initiative-item.component.css']
+  styleUrls: ['./initiative-item.component.scss']
 })
 export class InitiativeItemComponent implements OnInit {
 

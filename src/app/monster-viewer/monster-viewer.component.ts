@@ -6,13 +6,14 @@ import { Monster_Short } from './monster_short';
 @Component({
   selector: 'app-monster-viewer',
   templateUrl: './monster-viewer.component.html',
-  styleUrls: ['./monster-viewer.component.css']
+  styleUrls: ['./monster-viewer.component.scss']
 })
 export class MonsterViewerComponent implements OnInit {
 
   constructor(private mService: MonsterFetcherService) {  }
-  items: any = [];
+  items: any[] = [];
   ms : any[] = [];
+  monster: any;
  
   monsters: Monster_Short[] = [];
 
@@ -20,11 +21,13 @@ export class MonsterViewerComponent implements OnInit {
     this.getMonsters();
   }
 
-    async getMonsters() {
+  async getMonsters() {
     //this.monsters = this.mService.getMonstersShort(); 
     //this.mService.getMonstersShort().subscribe(monsters => this.monsters = monsters);
     this.items= await this.mService.getMonstersShort();
-   
+    
+    this.monster = await this.mService.getMonsterByURL(this.items[1].url);
+    
     
     //this.ms = this.items[1];
   }
