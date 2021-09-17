@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class MonsterFetcherService {
 
   items: any = [];
-  selectedMonster: any = {};
+  public selectedMonster: any = {};
   baseURL = "https://www.dnd5eapi.co";
   apiURL = "https://www.dnd5eapi.co/api/monsters/";
   mShort? : Monster_Short[] = [];

@@ -12,6 +12,10 @@ import { SpellslotComponent } from './spellslot/spellslot.component';
 import { SmallslotComponent } from './smallslot/smallslot.component';
 import { MonsterViewerComponent } from './monster-viewer/monster-viewer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MonsterFilterPipe } from './monster-filter.pipe';
+import { MonsterDetailComponent } from './monster-detail/monster-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +26,19 @@ import { HttpClientModule } from '@angular/common/http';
     SpellSlotTrackerComponent,
     SpellslotComponent,
     SmallslotComponent,
-    MonsterViewerComponent
+    MonsterViewerComponent,
+    MonsterFilterPipe,
+    MonsterDetailComponent
+    
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

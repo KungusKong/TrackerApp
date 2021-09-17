@@ -1,8 +1,16 @@
-<div class="sidebar-heading border-bottom bg-dark">Monster Viewer</div>
-<h3 *ngIf="monster">{{monster.hit_points}}</h3>
-<table class="table table-bordered table-striped bg-white mb-0">
-  <tr *ngFor="let item of items">{{item.name}}</tr> 
+<h5 class="listTitle">Monster Viewer</h5>
+<p *ngIf="monster">{{monster.name}}</p>
+
+<div class="input-group mb-3 search-box">
+  <input type="text" class="form-control" placeholder="Search..."  aria-describedby="basic-addon2" [(ngModel)]="search">
+  <div class="input-group-append">
+    <span class="input-group-text" id="basic-addon2"><mat-icon>search</mat-icon></span>
+  </div>
+</div>
+
+<table mat-table style="height: 83vh; overflow-y: auto;"class="table table-responsive">
+  <ng-container *ngFor="let item of items | monsterFilter: search">
+  <tr> <td class="list" (click)="selectMonster(item.url)">{{item.name}}</td></tr> 
   <!--<tr *ngIf="items">{{items}}</tr>-->
-
-
+  </ng-container>
 </table>
