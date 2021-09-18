@@ -31,12 +31,13 @@ export class MonsterFetcherService {
 
   async getMonsterByURL(url: string){
     let lurl = this.baseURL+url;
-    await this.http.get(lurl).toPromise().then(data => {console.log("Fetched: "+data);
+    await this.http.get(lurl).toPromise().then(data => {console.log();
       //this.items = JSON.parse(JSON.stringify(data));
       this.selectedMonster = data;
       
       //return this.items;
     });
+    console.log("Fetched: "+this.selectedMonster.name);
     return this.selectedMonster;
   }
 

@@ -17,6 +17,7 @@ export class MonsterViewerComponent implements OnInit {
   items: any[] = [];
   ms : any[] = [];
   monster: any;
+  titem: any;
   search: string = "";
   monsters: Monster_Short[] = [];
 
@@ -28,6 +29,10 @@ export class MonsterViewerComponent implements OnInit {
   async selectMonster(url: string){
     this.monster = await this.mService.getMonsterByURL(url);
 
+  }
+
+  selectItem(ite: any){
+    this.titem = ite;;
   }
 
   

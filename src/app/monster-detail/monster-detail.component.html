@@ -1,1 +1,7 @@
-<p *ngIf="monster">{{monster.name}}</p>
+<div *ngIf="monster" class="modal">
+    
+    <div class="modal-content">
+        <h1>{{monster.ab}}</h1>
+        <button (click)="close()" href="#"><mat-icon>close</mat-icon></button>
+    </div>
+</div>
