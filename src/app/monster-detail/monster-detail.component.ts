@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { MonsterFetcherService } from '../monster-viewer/monster-fetcher.service';
 
 @Component({
@@ -9,16 +9,22 @@ import { MonsterFetcherService } from '../monster-viewer/monster-fetcher.service
 export class MonsterDetailComponent implements OnInit {
 
   monster?: any;
-  @Input() monsterURL!: string;
+  @Input() monsterURL!: any;
 
   constructor(private mservice: MonsterFetcherService) { }
 
    ngOnInit(): void {
     this.selectMonster(this.monsterURL);
   }
+  ngOnChanges(): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
+    this.selectMonster(this.monsterURL);
+    
+  }
 
   close(){
-    this.monster = null;
+    this.monsterURL = null;
     this.mservice.selectedMonster = null;
   }
 

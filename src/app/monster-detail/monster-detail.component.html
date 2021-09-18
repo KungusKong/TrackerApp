@@ -1,7 +1,15 @@
-<div *ngIf="monster" class="modal">
+<div *ngIf="monsterURL && monster" class="modal">
     
     <div class="modal-content">
-        <h1>{{monster.ab}}</h1>
         <button (click)="close()" href="#"><mat-icon>close</mat-icon></button>
+        <h1>{{monster.name}}</h1>
+        <p>{{monster.size}} {{monster.type}} {{monster.subtype}}, {{monster.alignment}}</p>
+        <hr>
+        <p>Armor Class {{monster.armor_class}}</p>
+        <p>Hit Ponts {{monster.hit_points}} ({{monster.hit_dice}})</p>
+        <p>Speed {{monster.speed.walk}}{{monster.speed.climb}}{{monster.speed.burrow}}{{monster.speed.swim}}{{monster.speed.fly}}</p>
+        <hr>
+        <p>STR: {{monster.strength}} DEX: {{monster.dexterity}}</p>
+        
     </div>
 </div>

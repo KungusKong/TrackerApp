@@ -33,6 +33,7 @@ export class MonsterViewerComponent implements OnInit {
 
   selectItem(ite: any){
     this.titem = ite;;
+   
   }
 
   
