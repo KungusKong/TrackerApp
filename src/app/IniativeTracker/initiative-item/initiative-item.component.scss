@@ -1,3 +1,4 @@
+@import '/src/styles.scss';
 .HP {
     color: red;
 }
@@ -24,5 +25,5 @@
     display: inline-block;
 }
 .selected{
-    background-color: #32a852;
+    background-color: $base-color;
 }

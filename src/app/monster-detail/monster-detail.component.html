@@ -1,6 +1,6 @@
 <div *ngIf="monsterURL && monster" class="modal">
     
-    <div class="modal-content">
+    <div *ngIf="monsterURL == monster.url" class="modal-content">
         <button (click)="close()" href="#"><mat-icon>close</mat-icon></button>
         <h1>{{monster.name}}</h1>
         <p>{{monster.size}} {{monster.type}} {{monster.subtype}}, {{monster.alignment}}</p>
@@ -9,7 +9,7 @@
         <p>Hit Ponts {{monster.hit_points}} ({{monster.hit_dice}})</p>
         <p>Speed {{monster.speed.walk}}{{monster.speed.climb}}{{monster.speed.burrow}}{{monster.speed.swim}}{{monster.speed.fly}}</p>
         <hr>
-        <p>STR: {{monster.strength}} DEX: {{monster.dexterity}}</p>
-        
+        <p>STR: {{monster.strength}} DEX: {{monster.dexterity}} CON: {{monster.constitution}} INT: {{monster.intelligence}} WIS: {{monster.wisdom}} CHA: {{monster.charisma}}</p>
+        <div *ngFor="let prof of monster.proficiencies"><p>{{prof}}</p></div>
     </div>
 </div>
