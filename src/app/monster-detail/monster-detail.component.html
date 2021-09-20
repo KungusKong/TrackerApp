@@ -6,7 +6,7 @@
         <p>{{monster.size}} {{monster.type}} {{monster.subtype}}, {{monster.alignment}}</p>
         <hr>
         <p>Armor Class {{monster.armor_class}}</p>
-        <p>Hit Ponts {{monster.hit_points}} ({{monster.hit_dice}})</p>
+        <p>Hit Ponts {{monster.hit_points}} ({{monster.hit_dice}} +{{getAdditionalHP()}})</p>
         <p>Speed {{monster.speed.walk}}{{monster.speed.climb}}{{monster.speed.burrow}}{{monster.speed.swim}}{{monster.speed.fly}}</p>
         <hr>
         <p>STR: {{monster.strength}} DEX: {{monster.dexterity}} CON: {{monster.constitution}} INT: {{monster.intelligence}} WIS: {{monster.wisdom}} CHA: {{monster.charisma}}</p>

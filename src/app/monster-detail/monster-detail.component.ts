@@ -32,4 +32,18 @@ export class MonsterDetailComponent implements OnInit {
     this.monster = await this.mservice.getMonsterByURL(url);
 
   }
+
+  getAdditionalHP(): number{
+    let value = 0;
+    if(this.monster){
+      let count: string = this.monster.hit_dice.substr(0, this.monster.hit_dice.indexOf('d'));
+      value = parseInt(count)*this.getModifier(this.monster.constitution);
+    }
+    return value;
+  }
+
+  getModifier(stat: number): number{
+    let value = Math.floor((stat - 10)/2);
+    return value;
+  }
 }

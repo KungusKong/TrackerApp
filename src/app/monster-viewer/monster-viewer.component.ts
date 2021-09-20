@@ -38,7 +38,6 @@ export class MonsterViewerComponent implements OnInit {
 
   
 
-
   async getMonsters() {
     //this.monsters = this.mService.getMonstersShort(); 
     //this.mService.getMonstersShort().subscribe(monsters => this.monsters = monsters);
