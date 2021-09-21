@@ -1,6 +1,6 @@
 <h5 class="listTitle">Monster Viewer</h5>
 <div *ngIf="titem">
-<app-monster-detail [monsterURL]="titem.url"></app-monster-detail>
+<app-monster-detail (onClose)="reset()" [monsterURL]="titem.url"></app-monster-detail>
 </div>
 <div class="input-group mb-3 search-box">
   <input type="text" class="form-control" placeholder="Search..."  aria-describedby="basic-addon2" [(ngModel)]="search">

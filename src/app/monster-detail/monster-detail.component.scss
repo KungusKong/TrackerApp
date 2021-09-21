@@ -8,7 +8,7 @@
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+     /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
@@ -20,4 +20,65 @@
     border: 1px solid $base-color;
     width: 80%;
     height: 90%;
+    overflow-y: auto;
   }
+  .throws-list{
+    display : flex;
+     justify-content: between;
+  }
+  .low-margin{
+    margin: 0px;
+  }
+  .som-margin{
+    margin-bottom: 4px;
+  }
+  .topright {
+    position: absolute;
+    right: 18px;
+    top: 3px;
+  }
+  .closeBtn{
+    width: 25px;
+    height: 25px;
+   
+  }
+  hr{
+    border: none !important;
+    height: 3px !important;
+    clear:both !important;
+    display:block !important;
+  }
+  .thicc{
+    border: none !important;
+    height: 3px !important;
+    clear:both !important;
+    display:block !important;
+    
+  }
+  .thic{
+    border: none !important;
+    height: 1px !important;
+    clear:both !important;
+    display:block !important;
+    
+  }
+  .ability-title{
+    font-style: italic;
+  }
+  .action_table{
+    border-color: white !important;
+    border-width: 5px;
+  }
+  .action_name{
+    width: 100px;
+  }
+  .action_row tr:nth-child(even){
+    background-color: #ffffff !important;
+  }
+  .action_table tr:hover{
+    background-color: $base-color;
+  }
+  .action_row{
+    margin: 10px;
+  }
+  

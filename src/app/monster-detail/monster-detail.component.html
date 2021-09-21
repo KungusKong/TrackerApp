@@ -1,15 +1,86 @@
 <div *ngIf="monsterURL && monster" class="modal">
     
+
     <div *ngIf="monsterURL == monster.url" class="modal-content">
-        <button (click)="close()" href="#"><mat-icon>close</mat-icon></button>
+        <div class="topright closeBtn">
+            <button (click)="close()" href="#"><mat-icon>close</mat-icon></button>
+        </div>
         <h1>{{monster.name}}</h1>
-        <p>{{monster.size}} {{monster.type}} {{monster.subtype}}, {{monster.alignment}}</p>
-        <hr>
-        <p>Armor Class {{monster.armor_class}}</p>
-        <p>Hit Ponts {{monster.hit_points}} ({{monster.hit_dice}} +{{getAdditionalHP()}})</p>
-        <p>Speed {{monster.speed.walk}}{{monster.speed.climb}}{{monster.speed.burrow}}{{monster.speed.swim}}{{monster.speed.fly}}</p>
-        <hr>
-        <p>STR: {{monster.strength}} DEX: {{monster.dexterity}} CON: {{monster.constitution}} INT: {{monster.intelligence}} WIS: {{monster.wisdom}} CHA: {{monster.charisma}}</p>
-        <div *ngFor="let prof of monster.proficiencies"><p>{{prof}}</p></div>
+        <p class="low-margin">{{monster.size}} {{monster.type}} {{monster.subtype}}, {{monster.alignment}}</p>
+        <hr class="thicc">
+        <p class="low-margin">Armor Class {{monster.armor_class}}</p>
+        <p class="low-margin">Hit Ponts {{monster.hit_points}} ({{monster.hit_dice}} +{{getAdditionalHP()}})</p>
+        <p class="low-margin">Speed {{monster.speed.walk}}{{monster.speed.climb}}{{monster.speed.burrow}}{{monster.speed.swim}}{{monster.speed.fly}}</p>
+        <hr class="thicc">
+        <p class="stats low-margin"><strong>STR:</strong> {{monster.strength}}&nbsp; <strong>DEX:</strong> {{monster.dexterity}}&nbsp;
+            <strong>CON:</strong> {{monster.constitution}}&nbsp; <strong>INT:</strong> {{monster.intelligence}}&nbsp; 
+            <strong>WIS:</strong> {{monster.wisdom}}&nbsp; <strong>CHA:</strong> {{monster.charisma}}&nbsp;</p>
+        <hr class="thicc">
+        <div class="throws-list">
+            <strong>Saving Throws:&nbsp;</strong>
+            <div *ngFor="let prof of monster.proficiencies"><div *ngIf="isSavingThrow(prof)">{{removeProfType(prof)}} + {{prof.value}}&nbsp;&nbsp;</div></div>
+        </div>
+        
+        <div class="throws-list">
+            <strong>Skills:&nbsp;</strong>
+            <div *ngFor="let prof of monster.proficiencies"><div *ngIf="isSkill(prof)">{{removeProfType(prof)}} + {{prof.value}}&nbsp;&nbsp;  </div></div>
+        </div>
+        <div class="throws-list"*ngIf="monster.damage_vulnerabilities.length != 0">
+            <strong>Damage Vulnerabilities:&nbsp;</strong> 
+            <div  *ngFor="let res of monster.damage_vulnerabilities; let i = index">{{toTitleCase(res)}}{{i ===monster.damage_vulnerabilities.length -1 ? '' : ',&nbsp;' }}</div>
+        </div>
+        <div class="throws-list" *ngIf="monster.damage_resistances.length != 0">
+            <strong>Damage Resistances:&nbsp;</strong> 
+            <div  *ngFor="let res of monster.damage_resistances; let i = index">{{toTitleCase(res)}}{{i ===monster.damage_resistances.length -1 ? '' : ',&nbsp;' }}</div> 
+        </div>
+        <div class="throws-list" *ngIf="monster.damage_immunities.length != 0">
+            <strong>Damage Immunities:&nbsp;</strong> 
+            <div  *ngFor="let res of monster.damage_immunities; let i = index">{{toTitleCase(res)}}{{i ===monster.damage_immunities.length -1 ? '' : ',&nbsp;' }}</div>
+        </div>
+        <div class="throws-list" *ngIf="monster.condition_immunities.length != 0">
+            <strong>Condition Immunities:&nbsp;</strong> 
+            <div  *ngFor="let res of monster.condition_immunities; let i = index">{{toTitleCase(res.name)}}{{i ===monster.condition_immunities.length -1 ? '' : ',&nbsp;' }}</div>
+        </div>
+        <div>
+            <strong>Senses:&nbsp;</strong>{{getSenses()}} 
+        </div>
+        <div class="throws-list">
+            <strong>Languages:&nbsp;</strong><div *ngIf="monster.languages; else elseBlock">{{monster.languages}}</div><ng-template #elseBlock>None</ng-template>
+        </div>
+        <div>
+            <strong>Challenge:&nbsp;</strong> {{monster.challenge_rating}}
+        </div>
+
+        <hr class="thicc">
+        <div *ngFor="let abil of monster.special_abilities">
+            <strong class="ability-title">{{abil.name}}.&nbsp;</strong>
+            {{abil.desc}}
+        
+        </div>
+        <br>
+        <h3 class="low-margin">Actions</h3>
+        <hr class="thicc">
+        <table class="action_table" >
+            <tr  class="action_row" *ngFor="let abil of monster.actions">
+            <td class="action_name"><strong class="ability-title">{{abil.name}}.&nbsp;</strong></td>
+                <td>{{abil.desc}}</td>
+            </tr>
+        
+        </table>
+        <br>
+        <div *ngIf="monster.legendary_actions">
+            <h3 class="low-margin">Legendary Actions</h3>
+            <hr class="thicc">
+            <p>{{monster.name}} can take 3 legendary actions, choosing from the options below. 
+                Only one legendary action option can be used at a time and only at the end of another creature’s turn. 
+                {{monster.name}} regains spent legendary actions at the start of their turn.</p>
+            <table class="action_table"  >
+                <tr *ngFor="let abil of monster.legendary_actions" class="action_row">
+                <td class="action_name"><strong class="ability-title">{{abil.name}}.&nbsp;</strong></td>
+                    <td>{{abil.desc}}</td>
+                </tr>
+            
+            </table>
+        </div>
     </div>
 </div>

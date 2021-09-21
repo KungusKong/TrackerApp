@@ -27,12 +27,14 @@ export class MonsterViewerComponent implements OnInit {
 
 
   async selectMonster(url: string){
+    
     this.monster = await this.mService.getMonsterByURL(url);
 
   }
 
   selectItem(ite: any){
-    this.titem = ite;;
+    this.titem = ite;
+    console.log("CLICKED: "+ ite.name);
    
   }
 
@@ -52,6 +54,10 @@ export class MonsterViewerComponent implements OnInit {
         resolve(x);
       }, 2000);
     });
+  }
+
+  reset(){
+    this.titem = null;
   }
 
   
