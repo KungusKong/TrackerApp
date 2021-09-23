@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter, Renderer2, ViewChild, ElementRef, HostListener } from '@angular/core';
 
 import { MonsterFetcherService } from '../monster-viewer/monster-fetcher.service';
 
@@ -12,8 +12,29 @@ export class MonsterDetailComponent implements OnInit {
   monster?: any;
   @Input() monsterURL!: any;
   @Output() onClose = new EventEmitter();
+  @ViewChild('overlay') monsterContent!: ElementRef;
+  @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+    this.close();
+  }
 
-  constructor(private mservice: MonsterFetcherService) { }
+  constructor(private mservice: MonsterFetcherService, private renderer: Renderer2) {
+    this.renderer.listen('window', 'click',(e:Event)=>{
+      
+      /**
+       * Only run when toggleButton is not clicked
+       * If we don't check this, all clicks (even on the toggle button) gets into this
+       * section which in the result we might never see the menu open!
+       * And the menu itself is checked here, and it's where we check just outside of
+       * the menu and button the condition abbove must close the menu
+       */
+    if(this.monster){
+     if(e.target == this.monsterContent.nativeElement){
+        
+         this.close();
+     }
+    }
+  });
+   }
 
    ngOnInit(): void {
     this.selectMonster(this.monsterURL);
@@ -24,8 +45,12 @@ export class MonsterDetailComponent implements OnInit {
     this.selectMonster(this.monsterURL);
     
   }
+  clicked(str: string){
+   
+  }
 
   close(){
+    
     this.monsterURL = null;
     this.mservice.selectedMonster = null;
     this.onClose.emit();
@@ -34,7 +59,7 @@ export class MonsterDetailComponent implements OnInit {
   async selectMonster(url: string){
     this.monster = await this.mservice.getMonsterByURL(url);
    
-    console.log("special_abilities	: "+ JSON.stringify(this.monster.legendary_actions	));
+    //console.log("special_abilities	: "+ JSON.stringify(this.monster.legendary_actions	));
 
   }
 

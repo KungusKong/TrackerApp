@@ -1,7 +1,9 @@
-<div *ngIf="monsterURL && monster" class="modal">
+
+<div  id="overlay" class="overlay" #overlay *ngIf="monsterURL && monster" ></div>
+<div *ngIf="monsterURL && monster"  class="modal">
     
 
-    <div *ngIf="monsterURL == monster.url" class="modal-content">
+    <div *ngIf="monsterURL == monster.url"  class="modal-content">
         <div class="topright closeBtn">
             <button (click)="close()" href="#"><mat-icon>close</mat-icon></button>
         </div>
@@ -82,5 +84,9 @@
             
             </table>
         </div>
+        
+    </div>
+    <div class="modBot">
+        <h5>Escape to Close (Esc)</h5>
     </div>
 </div>
