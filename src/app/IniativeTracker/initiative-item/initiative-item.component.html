@@ -3,11 +3,11 @@
 
       <div [class]="item.order == selected ? 'selected': 'bg-secondary'" class="card-body text-light">
 
-        <h5 class="card-title">{{item.order}}: <input id="item-name" [(ngModel)]="item.name" placeholder="name"></h5>
+        <h5 class="card-title">{{item.order}}: <input (keyup)="edit()" id="item-name"  [(ngModel)]="item.name" placeholder="name"></h5>
         <div class="padding">
 
            <label for="item-hp">HP: </label>
-           <input type="number" id="item-hp" [(ngModel)]="item.hp" placeholder="name">
+           <input type="number" id="item-hp"  [(ngModel)]="item.hp" placeholder="name">
 
         </div>
         

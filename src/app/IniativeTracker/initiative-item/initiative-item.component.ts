@@ -12,6 +12,7 @@ export class InitiativeItemComponent implements OnInit {
 
  @Input() item: InitiativeItem={
   roll: 1,
+  url: "none",
   name: "Name",
   hp: 20,
   order: 1,
@@ -23,6 +24,7 @@ export class InitiativeItemComponent implements OnInit {
  @Output("removeItems") removeItems: EventEmitter<any> = new EventEmitter();
  @Output("moveUp") moveUp: EventEmitter<any> = new EventEmitter();
  @Output("duplicate") duplicate: EventEmitter<any> = new EventEmitter();
+ @Output("refresh") refresh: EventEmitter<any> = new EventEmitter();
  
  
    sort(): void{
@@ -46,6 +48,10 @@ export class InitiativeItemComponent implements OnInit {
     if(this.item){
       this.duplicate.emit(this.item.order);
     }
+  }
+
+  edit(){
+    this.refresh.emit();
   }
 
   constructor() { }

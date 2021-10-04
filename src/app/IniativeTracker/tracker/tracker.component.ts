@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { startWith } from 'rxjs/operators';
+import { Tracker } from 'src/app/models/tracker.model';
+import { RoomService } from 'src/app/services/room.service';
 import { InitiativeItem} from '../InitiativeItem';
 
 @Component({
@@ -7,10 +11,13 @@ import { InitiativeItem} from '../InitiativeItem';
   styleUrls: ['./tracker.component.scss']
 })
 export class TrackerComponent implements OnInit {
-
+tracker: Tracker = {id:'',turn: 1, items: []};
 items: InitiativeItem [] = [];
+start: boolean = false;
 
-  constructor() { }
+private _trackerSub?: Subscription;
+
+  constructor(private roomService: RoomService) { }
 
   public spotInOrder = 1;
 
@@ -18,11 +25,17 @@ items: InitiativeItem [] = [];
 
 
   ngOnInit(): void {
+    this._trackerSub = this.roomService.currentTracker.pipe(startWith({id:'',turn: 1, items: []})).subscribe(tracker=> this.tracker = tracker);
+  }
+  ngOnDestroy() {
+    if(this._trackerSub)
+    this._trackerSub.unsubscribe();
   }
 
   clearItems(): void{
     this.items = [];
     this.spotInOrder = 1;
+    this.refreshServer();
   }
 
   nextTurn(): void{
@@ -30,7 +43,7 @@ items: InitiativeItem [] = [];
     if(this.spotInOrder > this.items.length){
       this.spotInOrder = 1;
     }
-    
+    this.refreshServer();
   }
 
   /**
@@ -53,6 +66,7 @@ items: InitiativeItem [] = [];
     
     this.items.splice(order-1, 1);
     this.sortItems();
+    this.refreshServer();
     return false;
   }
 
@@ -71,6 +85,7 @@ items: InitiativeItem [] = [];
       }
 
     }
+    this.refreshServer();
   }
   duplicate(order: number): void{
     console.log("Duplicate: "+ order);
@@ -79,6 +94,7 @@ items: InitiativeItem [] = [];
       let temp : InitiativeItem;
       temp = {
         roll: this.items[order-1].roll,
+        url: this.items[order-1].url,
         name: this.items[order-1].name,
         hp: this.items[order-1].hp,
         order: this.items[order-1].order,
@@ -106,6 +122,7 @@ items: InitiativeItem [] = [];
   addBlankItem(): void{
     let temp: InitiativeItem={
       roll: 1,
+      url: "none",
       name: "Name",
       hp: 20,
       order: 1,
@@ -117,6 +134,25 @@ items: InitiativeItem [] = [];
   addItem(temp: InitiativeItem){
     this.items.push(temp);
     this.sortItems();
+    this.refreshServer();
   }
+
+  createRoom(){
+    
+    this.roomService.newTracker();
+    this.start = true;
+  }
+
+  refreshServer(){
+
+    this.tracker.items = this.items;
+    this.tracker.turn = this.spotInOrder;
+    this.roomService.editTracker(this.tracker);
+
+  }
+
+  
+
+
 
 }

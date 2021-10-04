@@ -1,6 +1,7 @@
-import {Monster} from 'src/app/models/monster.model';
+import { InitiativeItem } from '../IniativeTracker/InitiativeItem';
 export class Tracker {
     id: string = "";
-    items: Monster[] =[];
+    turn: number = 1;
+    items: InitiativeItem[] =[];
 
 }

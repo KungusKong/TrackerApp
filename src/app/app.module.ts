@@ -16,7 +16,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MonsterFilterPipe } from './monster-filter.pipe';
 import { MonsterDetailComponent } from './monster-detail/monster-detail.component';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 
+const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,8 @@ import { MonsterDetailComponent } from './monster-detail/monster-detail.componen
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [],
   bootstrap: [AppComponent]
