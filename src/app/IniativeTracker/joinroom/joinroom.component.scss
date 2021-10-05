@@ -1,0 +1,35 @@
+@import '/src/styles.scss';
+.selected{
+    background-color: $base-color;
+    transform: scale(1.1);
+}
+.standard{
+    background-color: $card-color ;
+    
+}
+.center{ 
+    text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+.flex-container > div{
+   
+    width: 250px;
+    height: 95px;
+    border-radius: 3px;
+    margin: 15px;
+    text-align: center;
+    
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    line-height: 35px;
+    font-size: 30px;
+    padding: 0 20px;
+    
+}

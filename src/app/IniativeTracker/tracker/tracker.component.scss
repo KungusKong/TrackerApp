@@ -1,3 +1,4 @@
+@import '/src/styles.scss';
 ul {
     margin: 0 auto;
     text-align: center;
@@ -6,4 +7,30 @@ ul {
 li {
     display: inline-block;
     vertical-align: top;
+}
+.center{
+    text-align: center;
+    justify-content: center;
+    
+}
+.next-turn{
+    
+    
+    background-color: $base-color;
+    border: none;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 20px;
+    padding: 10px;
+    transition: 0.15s;
+}
+.next-turn:hover{
+    background-color: $hover-color;
+    transform: scale(1.05);
+    box-shadow: 5px 5px 5px black;
+}
+.next-turn:active{
+    transform: translateY(2px);
 }

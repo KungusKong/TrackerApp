@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { Tracker } from 'src/app/models/tracker.model';
@@ -11,11 +11,12 @@ import { InitiativeItem} from '../InitiativeItem';
   styleUrls: ['./tracker.component.scss']
 })
 export class TrackerComponent implements OnInit {
-tracker: Tracker = {id:'',turn: 1, items: []};
+tracker: Tracker = {id: '', createdBy:'',turn: 1, items: []};
 items: InitiativeItem [] = [];
 start: boolean = false;
 
 private _trackerSub?: Subscription;
+
 
   constructor(private roomService: RoomService) { }
 
@@ -25,11 +26,12 @@ private _trackerSub?: Subscription;
 
 
   ngOnInit(): void {
-    this._trackerSub = this.roomService.currentTracker.pipe(startWith({id:'',turn: 1, items: []})).subscribe(tracker=> this.tracker = tracker);
+    this._trackerSub = this.roomService.currentTracker.pipe(startWith({id: '', createdBy:'',turn: 1, items: []})).subscribe(tracker=> this.tracker = tracker);
   }
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if(this._trackerSub)
     this._trackerSub.unsubscribe();
+    this.leave();
   }
 
   clearItems(): void{
@@ -149,6 +151,11 @@ private _trackerSub?: Subscription;
     this.tracker.turn = this.spotInOrder;
     this.roomService.editTracker(this.tracker);
 
+  }
+
+  leave(){
+    this.roomService.closeRoom(this.tracker.id);
+    window.location.reload();
   }
 
   

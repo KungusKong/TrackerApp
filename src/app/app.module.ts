@@ -17,8 +17,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MonsterFilterPipe } from './monster-filter.pipe';
 import { MonsterDetailComponent } from './monster-detail/monster-detail.component';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { JoinroomComponent } from './IniativeTracker/joinroom/joinroom.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
+//const config: SocketIoConfig = { url: 'http://140.186.141.10:4444', options: {} };
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,8 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
     SmallslotComponent,
     MonsterViewerComponent,
     MonsterFilterPipe,
-    MonsterDetailComponent
+    MonsterDetailComponent,
+    JoinroomComponent
     
     
   ],

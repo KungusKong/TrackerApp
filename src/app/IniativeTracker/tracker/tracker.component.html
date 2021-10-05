@@ -1,9 +1,14 @@
-<h1>Initiative Tracker</h1>
+<div (window:beforeunload)="leave()"></div>
+<h1 class="center">Initiative Tracker</h1>
 <div class="grid-container">
-    <h4 *ngIf="!items[0]">Click Create Room to Start</h4>
-    <h4 *ngIf="start">Room Code: {{tracker.id}}</h4>
-    <button *ngIf="!start" (click)="createRoom()" href="" class="btn btn-primary mb-2">Create Room</button>
-    <button *ngIf="items[0]" (click)="nextTurn()" class = "btn btn-success">Next Turn</button><br>
+    <div class="center">
+        <h4  *ngIf="!start">Click Create Room to Start</h4>
+        <h4  *ngIf="start">Room Code: {{tracker.id}}</h4>
+        
+        <button  *ngIf="!start" (click)="createRoom()" href="" class="btn btn-primary mb-2">Create Room</button>
+        <button *ngIf="items[0]" (click)="nextTurn()" class="next-turn">Next Turn</button><br>
+    </div>
+    <hr>
     <ul style="list-style-type:none; padding: 0px 0px; display: inline;" class="bg-dark text-light">
         <li class="col-sm-3 bg-dark text-light" style="padding: 4px;" *ngFor="let nitem of items">
             <div *ngIf="nitem">

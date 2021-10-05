@@ -11,13 +11,14 @@ export class RoomService {
 
   currentTracker = this.socket.fromEvent<Tracker>('tracker');
   errors = this.socket.fromEvent<string>('error');
+  roomClosed = this.socket.fromEvent<boolean>('roomClosed');
 
   getTracker(id: string){
     this.socket.emit('getTracker', id);
   }
 
   newTracker(){
-    this.socket.emit('addTracker', {id: '',turn: 1, items: []})
+    this.socket.emit('addTracker', {id: '', createdBy:'',turn: 1, items: []})
   }
   editTracker(tracker: Tracker){
     this.socket.emit('editTracker', tracker);
@@ -25,8 +26,16 @@ export class RoomService {
 
   blankTrackerItem(){
     
-    let tracker: Tracker = {id: '',turn: 1, items: []};
+    let tracker: Tracker = {id: '', createdBy:'',turn: 1, items: []};
     return tracker;
+  }
+
+  disconnect(){
+    this.socket.disconnect();
+  }
+  closeRoom(id: string){
+    this.socket.emit('closeRoom', id);
+    this.disconnect();
   }
 
 

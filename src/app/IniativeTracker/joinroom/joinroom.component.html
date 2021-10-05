@@ -1,0 +1,17 @@
+
+<div *ngIf="!inRoom()">
+<h1>Initiative Tracker</h1>
+<input [(ngModel)]="id" type="text" placeholder="Enter Code Here">
+<button style="margin-left: 1rem;" class="btn btn-primary mb-2" (click)="joinRoom()">Join Room</button>
+<p style="color: red;">{{error}}</p>
+</div>
+<div  class="center" *ngIf="inRoom()">
+    <h1 class="current">Current turn: {{currentTurn()}}</h1>
+    <p (click)="logTracker()">Room Code: {{tracker.id}}</p>
+    <hr>
+    <div class="flex-container">
+        <div [class]="nitem.order == tracker.turn ? 'selected': 'standard'" *ngFor="let nitem of tracker.items">
+            {{nitem.name}}
+        </div>
+    </div>
+</div>

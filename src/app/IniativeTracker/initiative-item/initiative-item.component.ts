@@ -29,6 +29,7 @@ export class InitiativeItemComponent implements OnInit {
  
    sort(): void{
     this.sortItems.emit();
+    this.refresh.emit();
   }
   
   remove(): void{
@@ -36,18 +37,21 @@ export class InitiativeItemComponent implements OnInit {
 
       this.removeItems.emit(this.item.order);
     }
+    this.refresh.emit();
   }
   moveUpwards(): void{
     if(this.item){
 
       this.moveUp.emit(this.item.order);
     }
+    this.refresh.emit();
   }
 
   dup(): void{
     if(this.item){
       this.duplicate.emit(this.item.order);
     }
+    this.refresh.emit();
   }
 
   edit(){

@@ -1,7 +1,7 @@
 <div *ngIf="item" class="text-dark">
     <div [class]="item.order == selected ? 'selected': 'bg-secondary'" class="card text-light">
 
-      <div [class]="item.order == selected ? 'selected': 'bg-secondary'" class="card-body text-light">
+      <div [class]="item.order == selected ? 'selected': 'standard'" class="card-body text-light">
 
         <h5 class="card-title">{{item.order}}: <input (keyup)="edit()" id="item-name"  [(ngModel)]="item.name" placeholder="name"></h5>
         <div class="padding">
