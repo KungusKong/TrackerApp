@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
-$base-color: #079459;
-$hover-color: #0f56c7;
+$base-color: #54008C;
+$hover-color: #42006e;
 $background-color: #131313;
-$card-color: #727272;
+$card-color: #353535;
 #sidebar-wrapper .sidebar-heading {
     padding: 0.875rem 3rem;
     font-size: 1.2rem;
@@ -20,4 +20,15 @@ $card-color: #727272;
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #1f1f1f; }
+
+body::-webkit-scrollbar{
+    width: 0.25rem;
+}
+body::-webkit-scrollbar-track{
+    background: #131313;
+}
+body::-webkit-scrollbar-thumb{
+    background:grey;
+}
+
 

@@ -43,9 +43,7 @@ export class JoinroomComponent implements OnInit {
   joinRoom(){
     this.error = "";
     this.start = true;
-    this.roomService.getTracker(this.id);
-
-
+    this.roomService.getTracker(this.id.toUpperCase());
   }
 
   inRoom(): boolean{

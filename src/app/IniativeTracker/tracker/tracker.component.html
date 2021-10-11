@@ -1,15 +1,20 @@
 <div (window:beforeunload)="leave()"></div>
-<h1 class="center">Initiative Tracker</h1>
+<h1 style="margin-top: 10px;" class="center">Initiative Tracker</h1>
 <div class="grid-container">
     <div class="center">
         <h4  *ngIf="!start">Click Create Room to Start</h4>
-        <h4  *ngIf="start">Room Code: {{tracker.id}}</h4>
+        <h3  *ngIf="start">Room Code: {{tracker.id}}</h3>
+        <h5 *ngIf="start">Round: <input type="number" style="width: 50px;"  [(ngModel)]="tracker.round" (ngModelChange)="refreshServer()"></h5>
         
         <button  *ngIf="!start" (click)="createRoom()" href="" class="btn btn-primary mb-2">Create Room</button>
-        <button *ngIf="items[0]" (click)="nextTurn()" class="next-turn">Next Turn</button><br>
+        <div class="inline">
+            <button *ngIf="start" (click)="addBlankItem()" href="" class="margin specialBtn btn btn-primary">Add</button>
+            <button *ngIf="items[0]" (click)="nextTurn()" class="next-turn">Next Turn</button>
+            <button *ngIf="items[0]" (click)="clearItems()" href="" class="margin specialBtn btn btn-danger">Clear</button>
+        </div>
     </div>
     <hr>
-    <ul style="list-style-type:none; padding: 0px 0px; display: inline;" class="bg-dark text-light">
+    <!--ul style="list-style-type:none; padding: 0px 0px; display: inline;" class="bg-dark text-light">
         <li class="col-sm-3 bg-dark text-light" style="padding: 4px;" *ngFor="let nitem of items">
             <div *ngIf="nitem">
             <app-initiative-item (duplicate) = "duplicate(nitem.order)" (moveUp)="moveUp(nitem.order)" (sortItems)="sortItems()" 
@@ -22,6 +27,19 @@
             <br>
             <button *ngIf="items[0]" (click)="clearItems()" href="" class="btn btn-danger">CLEAR</button>
         </li>
-    </ul>
+    </ul!-->
+    <div class="flex-container">
+        <div [class]="nitem.order == spotInOrder ? 'selected': 'standard'"*ngFor="let nitem of items">
+            <app-initiative-item (duplicate) = "duplicate(nitem.order)" (moveUp)="moveUp(nitem.order)" (sortItems)="sortItems()" 
+            (removeItems)="removeItem(nitem.order) " (refresh)="refreshServer()"
+            [selected]="spotInOrder" [item]="nitem"></app-initiative-item>
+        </div>
+
+        
+        
+
+    </div>
+
+
 </div>
 

@@ -2,9 +2,11 @@
 .selected{
     background-color: $base-color;
     transform: scale(1.1);
+    transition: 0.15s;
 }
 .standard{
     background-color: $card-color ;
+    transition: 0.15s;
     
 }
 .center{ 
@@ -33,3 +35,31 @@
     padding: 0 20px;
     
 }
+.joinBox{
+    border-radius: 5px;
+    height: 50px;
+    border-color: #54008C;
+    background-color: #54008C;
+    box-shadow: none;
+    border-style: hidden;
+    color: white;
+    margin-top: 15px;
+}
+.joinBox::placeholder{
+    color: rgb(199, 199, 199); 
+    padding-left: 3px;
+}
+.joinBox:focus { 
+    outline: none !important;
+    border-color: #AF37FF;
+    box-shadow: 0 0 10px #AF37FF;
+ }
+ .joinButton{
+     margin-top: 18px;
+     height: 44px;
+ }
+ .flexC{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+ }

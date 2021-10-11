@@ -3,13 +3,13 @@
 <app-monster-detail (onClose)="reset()" [monsterURL]="titem.url"></app-monster-detail>
 </div>
 <div class="input-group mb-3 search-box">
-  <input type="text" class="form-control" placeholder="Search..."  aria-describedby="basic-addon2" [(ngModel)]="search">
+  <input type="text" class="form-control" placeholder="Search..."   [(ngModel)]="search">
   <div class="input-group-append">
     <span class="input-group-text" id="basic-addon2"><mat-icon>search</mat-icon></span>
   </div>
 </div>
 
-<table mat-table style="height: 83vh; overflow-y: auto;"class="table table-responsive">
+<table mat-table class="table table-responsive">
   <ng-container *ngFor="let item of items | monsterFilter: search">
   <tr> <td class="list" (click)="selectItem(item)">{{item.name}}</td></tr> 
   <!--<tr *ngIf="items">{{items}}</tr>-->

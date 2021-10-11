@@ -19,8 +19,8 @@ import { MonsterDetailComponent } from './monster-detail/monster-detail.componen
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { JoinroomComponent } from './IniativeTracker/joinroom/joinroom.component';
 
-const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
-//const config: SocketIoConfig = { url: 'http://140.186.141.10:4444', options: {} };
+//const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
+const config: SocketIoConfig = { url: 'http://140.186.141.10:4444', options: {} };
 @NgModule({
   declarations: [
     AppComponent,

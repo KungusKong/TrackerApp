@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { Tracker } from 'src/app/models/tracker.model';
+import { MonsterViewerService } from 'src/app/services/monster-viewer.service';
 import { RoomService } from 'src/app/services/room.service';
 import { InitiativeItem} from '../InitiativeItem';
 
@@ -11,14 +12,14 @@ import { InitiativeItem} from '../InitiativeItem';
   styleUrls: ['./tracker.component.scss']
 })
 export class TrackerComponent implements OnInit {
-tracker: Tracker = {id: '', createdBy:'',turn: 1, items: []};
+tracker: Tracker = {id: '', createdBy:'',turn: 1,round: 1, items: []};
 items: InitiativeItem [] = [];
 start: boolean = false;
 
 private _trackerSub?: Subscription;
 
 
-  constructor(private roomService: RoomService) { }
+  constructor(private roomService: RoomService, private viewerService: MonsterViewerService) { }
 
   public spotInOrder = 1;
 
@@ -26,23 +27,30 @@ private _trackerSub?: Subscription;
 
 
   ngOnInit(): void {
-    this._trackerSub = this.roomService.currentTracker.pipe(startWith({id: '', createdBy:'',turn: 1, items: []})).subscribe(tracker=> this.tracker = tracker);
+    this._trackerSub = this.roomService.currentTracker.pipe(startWith({id: '', createdBy:'',turn: 1, round: 1, items: []})).subscribe(tracker=> {
+      return this.tracker = tracker;
+    });
+    this.viewerService.openSearch();
+    console.log("OPENED TRACKER");
   }
   ngOnDestroy(): void {
     if(this._trackerSub)
     this._trackerSub.unsubscribe();
     this.leave();
+    this.viewerService.closeSearch();
   }
 
   clearItems(): void{
     this.items = [];
     this.spotInOrder = 1;
+    this.tracker.round = 1;
     this.refreshServer();
   }
 
   nextTurn(): void{
     this.spotInOrder++;
     if(this.spotInOrder > this.items.length){
+      this.tracker.round++;
       this.spotInOrder = 1;
     }
     this.refreshServer();

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import { Subscription } from 'rxjs';
+import { MonsterViewerService } from './services/monster-viewer.service';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +11,15 @@ import {ActivatedRoute} from '@angular/router';
 export class AppComponent {
   title = 'Initiative Tracker';
   
+  viewerOpen = false;
+
+  constructor(public viewerService: MonsterViewerService) {
+   
+  }
+  ngOnInit(): void {
+    this.viewerOpen = this.viewerService.searchOpen;
+  }
+  ngOnDestroy(): void {
+
+  }
 }

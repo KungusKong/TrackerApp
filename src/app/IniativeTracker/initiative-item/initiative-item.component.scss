@@ -12,7 +12,7 @@
     width: 60px;
 }
 #item-hp{
-    width: 100px;
+    width: 60px;
     color: red;
 
 }
@@ -30,3 +30,16 @@
 .standard{
     background-color: $card-color;
 }
+.inputBox{
+    border-radius: 5px;
+}
+.flexTainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.marg{
+    margin: 10px;
+    margin-bottom: 20px;
+}
+

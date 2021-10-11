@@ -18,7 +18,7 @@ export class RoomService {
   }
 
   newTracker(){
-    this.socket.emit('addTracker', {id: '', createdBy:'',turn: 1, items: []})
+    this.socket.emit('addTracker', {id: '', createdBy:'',turn: 1, round: 1, items: []})
   }
   editTracker(tracker: Tracker){
     this.socket.emit('editTracker', tracker);
@@ -26,7 +26,7 @@ export class RoomService {
 
   blankTrackerItem(){
     
-    let tracker: Tracker = {id: '', createdBy:'',turn: 1, items: []};
+    let tracker: Tracker = {id: '', createdBy:'',turn: 1, round: 1, items: []};
     return tracker;
   }
 
