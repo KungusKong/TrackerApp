@@ -39,21 +39,23 @@ li {
     flex-wrap: wrap;
     justify-content: center;
     
+    
 }
 .flex-container > div{
    
     width: 315px;
-    height: 200px;
-    border-radius: 3px;
+    height: 220px;
+    border-radius: 4px;
     margin: 10px;
-    text-align: center;
+    //text-align: center;
     
-    justify-content: center;
-    align-items: center;
+    //justify-content: center;
+    //align-items: center;
     display: flex;
     line-height: 35px;
     font-size: 18px;
-    padding: 0 20px;
+    padding: 0 0px;
+    position: relative;
     
 }
 .specialBtn{
@@ -62,6 +64,7 @@ li {
 }
 .selected{
     background-color: $base-color;
+    outline: solid 2px rgb(161, 5, 161);
     
 }
 .standard{

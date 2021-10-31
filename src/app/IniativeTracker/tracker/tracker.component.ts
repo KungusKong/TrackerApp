@@ -108,7 +108,8 @@ private _trackerSub?: Subscription;
         name: this.items[order-1].name,
         hp: this.items[order-1].hp,
         order: this.items[order-1].order,
-        showMove: this.items[order-1].showMove
+        showMove: this.items[order-1].showMove,
+        notes: this.items[order-1].notes
       }
       console.log("Duplicating: "+ temp.name);
       this.addItem(temp);
@@ -136,7 +137,8 @@ private _trackerSub?: Subscription;
       name: "Name",
       hp: 20,
       order: 1,
-      showMove: false
+      showMove: false,
+      notes: ""
   };
    this.addItem(temp);
     

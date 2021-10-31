@@ -16,7 +16,8 @@ export class InitiativeItemComponent implements OnInit {
   name: "Name",
   hp: 20,
   order: 1,
-  showMove: false
+  showMove: false,
+  notes: ""
   };
  @Input() selected = 1;
 

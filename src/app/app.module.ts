@@ -18,6 +18,9 @@ import { MonsterFilterPipe } from './monster-filter.pipe';
 import { MonsterDetailComponent } from './monster-detail/monster-detail.component';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { JoinroomComponent } from './IniativeTracker/joinroom/joinroom.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatInputModule} from '@angular/material/input';
 
 //const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 const config: SocketIoConfig = { url: 'http://140.186.141.10:4444', options: {} };
@@ -44,6 +47,9 @@ const config: SocketIoConfig = { url: 'http://140.186.141.10:4444', options: {} 
     HttpClientModule,
     BrowserAnimationsModule,
     MatIconModule,
+    MatTooltipModule,
+    MatToolbarModule,
+    MatInputModule,
     SocketIoModule.forRoot(config)
   ],
   providers: [],

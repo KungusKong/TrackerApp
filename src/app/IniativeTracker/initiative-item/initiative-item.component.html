@@ -1,5 +1,13 @@
-        <div style="margin-bottom: 20px;">
-        <h5>{{item.order}}: <input (keyup)="edit()" class="inputBox" id="item-name"  [(ngModel)]="item.name" placeholder="name"></h5>
+        <div class="toolbar">
+          <div class="toolbar-row">
+           <input (keyup)="edit()" id="item-name"  [(ngModel)]="item.name" placeholder="name">
+           <div class="topButtons">
+             <button *ngIf="item.showMove" matTooltip="Move Up" [matTooltipPosition]="'above'" [matTooltipShowDelay]="450"  (click)="moveUpwards()" class="iconButton"><mat-icon class="icon">west</mat-icon></button>
+             <button matTooltip="Duplicate" [matTooltipPosition]="'above'" [matTooltipShowDelay]="450" (click)="dup()" class="iconButton"><mat-icon class="icon">content_copy</mat-icon></button>
+             <button matTooltip="Remove" [matTooltipPosition]="'above'" [matTooltipShowDelay]="450" (click)="remove()" class="iconButton"><mat-icon class="icon">delete</mat-icon></button>
+           </div>
+          </div>
+          
         </div>
         <div class="flexTainer">
           <div class="marg">
@@ -10,19 +18,15 @@
               <label for="item-roll">Initative: </label>
               <input class="inputBox" (change)="sort()" type="number" id="item-roll" [(ngModel)]="item.roll" placeholder="Initative">
             </div>
-          </div>
-        
-
-        
-          <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-          <div *ngIf="item.showMove" style="display: inline">
-            <button  (click)="moveUpwards()" href="#" class=" btn btn-primary mar">Move Up</button>
-          </div>
-          
-          <button (click)="dup()" href="#" class=" btn btn-success mar">Duplicate</button>
-          
-          <button (click)="remove()" href="#" class=" btn btn-danger mar">Remove</button>
+            <div>
+              <label for="item-roll">Notes: </label>
+              <textarea class="inputBox notes" [(ngModel)]="item.notes" placeholder="Notes"></textarea>
+            </div>
         </div>
+          <div class="toolbar-b">
+            <a class="link"><mat-icon class="link-icon">link</mat-icon></a>
+          </div>
+        
 
         
 

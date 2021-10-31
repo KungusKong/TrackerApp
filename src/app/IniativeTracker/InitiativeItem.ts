@@ -5,4 +5,5 @@ export interface InitiativeItem {
     hp: number;
     order: number;
     showMove: boolean;
+    notes: string;
   }
