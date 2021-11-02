@@ -1,4 +1,5 @@
 @import '/src/styles.scss';
+$toolbar-Color:  rgb(80, 80, 80);
   .modal {
     display: block; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -10,30 +11,26 @@
     
     
   }
-  .overlay{
-    z-index: 2; 
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    display: block; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    
-  }  
   .modal-content {
     background-color: #131313;
     color: white;
     margin: auto;
-    padding: 20px;
-    border: 1px solid $base-color;
+    
+    outline: 1px solid $base-color;
+    border: none;
     width: 80%;
-    height: 90%;
-    overflow-y: auto;
+    height: 92%;
+    
     z-index: 2;
+  }
+  .actual-content{
+    padding-top: 110px;
+    overflow-y: auto;
+    padding: 10px;
   }
   .modBot{
     text-align: center;
+    color: white;
     padding: 10px;
   }
   .throws-list{
@@ -54,45 +51,99 @@
   .closeBtn{
     width: 25px;
     height: 25px;
-   
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    position: fixed;
+    padding: 0px;
+  }
+  .closeBtn:hover{
+    border-radius: 3px;
+    outline: solid white 3px;
+    
+  }
+  .closeIcon{
+    font-size: 30px;
+    margin-top: -2px;
+    margin-left: -6px;
   }
   hr{
-    border: none !important;
-    height: 3px !important;
-    clear:both !important;
-    display:block !important;
+    border: none;
+    height: 3px;
+    
+    
   }
   .thicc{
-    border: none !important;
-    height: 3px !important;
-    clear:both !important;
-    display:block !important;
+    border: none;
+    height: 5px;
+    
+    
     
   }
   .thic{
-    border: none !important;
-    height: 1px !important;
-    clear:both !important;
-    display:block !important;
+    border: none;
+    height: 1px;
+    
+    
     
   }
   .ability-title{
     font-style: italic;
   }
   .action_table{
-    border-color: white !important;
+    
     border-width: 5px;
   }
   .action_name{
     width: 100px;
-  }
-  .action_row tr:nth-child(even){
-    background-color: #ffffff !important;
   }
   .action_table tr:hover{
     background-color: $base-color;
   }
   .action_row{
     margin: 10px;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+    border-color: #333333;
   }
+  .toolbar{
+   
+    background-color: $hover-color;
+    border-bottom: 1px solid black;
+    width: auto;
+    height: 100px;
+    position: sticky;
+    border-radius: 4px 4px 0px 0px;
+    padding-top: 1px;
+    padding-left: 5px;
+    font-size: 20px;
+    
+}
+.toolbar-row{
+  display: flex;
+  margin: 0px;
+  
+  
+}
+.typeRow{
+  font-size: 18px;
+}
+.topButtons{
+    
+  margin-left: auto;
+  margin-right: 35px;
+  margin-top: 5px;
+}
+
+  .actual-content::-webkit-scrollbar{
+    width: 0.25rem;
+}
+.actual-content::-webkit-scrollbar-track{
+    background: #131313;
+}
+.actual-content::-webkit-scrollbar-thumb{
+    background:grey;
+}
+
   

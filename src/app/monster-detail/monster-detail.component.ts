@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter, Renderer2, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter, Renderer2, ViewChild, ElementRef, HostListener, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { MonsterFetcherService } from '../monster-viewer/monster-fetcher.service';
 
@@ -11,38 +12,23 @@ export class MonsterDetailComponent implements OnInit {
 
   monster?: any;
   @Input() monsterURL!: any;
-  @Output() onClose = new EventEmitter();
-  @ViewChild('overlay') monsterContent!: ElementRef;
   @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(event: KeyboardEvent) {
     this.close();
   }
 
-  constructor(private mservice: MonsterFetcherService, private renderer: Renderer2) {
-    this.renderer.listen('window', 'click',(e:Event)=>{
-      
-      /**
-       * Only run when toggleButton is not clicked
-       * If we don't check this, all clicks (even on the toggle button) gets into this
-       * section which in the result we might never see the menu open!
-       * And the menu itself is checked here, and it's where we check just outside of
-       * the menu and button the condition abbove must close the menu
-       */
-    if(this.monster){
-     if(e.target == this.monsterContent.nativeElement){
-        
-         this.close();
-     }
-    }
-  });
+  constructor(private mservice: MonsterFetcherService, private renderer: Renderer2, public dialogRef: MatDialogRef<MonsterDetailComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+    console.log(JSON.stringify(this.data.item));
+    this.monsterURL = this.data.item.url;
    }
 
    ngOnInit(): void {
-    this.selectMonster(this.monsterURL);
+    this.selectMonster(this.data.item.url);
   }
   ngOnChanges(): void {
     //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
     //Add '${implements OnChanges}' to the class.
-    this.selectMonster(this.monsterURL);
+    console.log(JSON.stringify(this.data.item));
+    this.selectMonster(this.data.item.url);
     
   }
   clicked(str: string){
@@ -53,7 +39,7 @@ export class MonsterDetailComponent implements OnInit {
     
     this.monsterURL = null;
     this.mservice.selectedMonster = null;
-    this.onClose.emit();
+    this.dialogRef.close();
   }
 
   async selectMonster(url: string){
@@ -74,6 +60,14 @@ export class MonsterDetailComponent implements OnInit {
 
   getModifier(stat: number): number{
     let value = Math.floor((stat - 10)/2);
+    return value;
+  }
+  getModifierString(stat: number): string{
+    let symb = "+";
+    if(stat<10){
+      let symb = "";
+    }
+    let value = symb+ this.getModifier(stat);
     return value;
   }
 

@@ -5,6 +5,8 @@ import { Monster_Short } from './monster_short';
 import { MatIcon } from '@angular/material/icon';
 import { JsonpClientBackend } from '@angular/common/http';
 import { MonsterFilterPipe } from '../monster-filter.pipe';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MonsterDetailComponent } from '../monster-detail/monster-detail.component';
 
 @Component({
   selector: 'app-monster-viewer',
@@ -13,7 +15,7 @@ import { MonsterFilterPipe } from '../monster-filter.pipe';
 })
 export class MonsterViewerComponent implements OnInit {
 
-  constructor(private mService: MonsterFetcherService) {  }
+  constructor(private mService: MonsterFetcherService, public dialog: MatDialog) {  }
   items: any[] = [];
   ms : any[] = [];
   monster: any;
@@ -35,7 +37,22 @@ export class MonsterViewerComponent implements OnInit {
   selectItem(ite: any){
     this.titem = ite;
     console.log("CLICKED: "+ ite.name);
+    this.openDialog();
    
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(MonsterDetailComponent, {
+      width: '1px',
+      height: '1px',
+      data: {item: this.titem},
+      panelClass: 'modal-content'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.reset();
+    });
   }
 
   

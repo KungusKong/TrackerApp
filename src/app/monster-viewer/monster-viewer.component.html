@@ -1,7 +1,4 @@
 <h5 class="listTitle">Monster Viewer</h5>
-<div *ngIf="titem">
-<app-monster-detail (onClose)="reset()" [monsterURL]="titem.url"></app-monster-detail>
-</div>
 <div class="input-group mb-3 search-box">
   <input type="text" class="form-control" placeholder="Search..."   [(ngModel)]="search">
   <div class="input-group-append">

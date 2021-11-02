@@ -1,23 +1,32 @@
-
-<div  id="overlay" class="overlay" #overlay *ngIf="monsterURL && monster" ></div>
 <div *ngIf="monsterURL && monster"  class="modal">
     
 
     <div *ngIf="monsterURL == monster.url"  class="modal-content">
-        <div class="topright closeBtn">
-            <button (click)="close()" href="#"><mat-icon>close</mat-icon></button>
+        <div class="toolbar">
+            <div class="toolbar-row">
+                <h1>{{monster.name}}</h1>
+                <div class="topButtons">
+                    <button class="closeBtn" (click)="close()" href="#"><mat-icon class="closeIcon">close</mat-icon></button>
+                </div>
+            </div>
+            <div class="toolbar-row">
+                <p class="low-margin typeRow">{{monster.size}} {{monster.type}} {{monster.subtype}}, {{monster.alignment}}</p>
+            </div>
         </div>
-        <h1>{{monster.name}}</h1>
-        <p class="low-margin">{{monster.size}} {{monster.type}} {{monster.subtype}}, {{monster.alignment}}</p>
-        <hr class="thicc">
+        <div class="actual-content">
+        
         <p class="low-margin">Armor Class {{monster.armor_class}}</p>
         <p class="low-margin">Hit Ponts {{monster.hit_points}} ({{monster.hit_dice}} +{{getAdditionalHP()}})</p>
         <p class="low-margin">Speed {{monster.speed.walk}}{{monster.speed.climb}}{{monster.speed.burrow}}{{monster.speed.swim}}{{monster.speed.fly}}</p>
-        <hr class="thicc">
-        <p class="stats low-margin"><strong>STR:</strong> {{monster.strength}}&nbsp; <strong>DEX:</strong> {{monster.dexterity}}&nbsp;
-            <strong>CON:</strong> {{monster.constitution}}&nbsp; <strong>INT:</strong> {{monster.intelligence}}&nbsp; 
-            <strong>WIS:</strong> {{monster.wisdom}}&nbsp; <strong>CHA:</strong> {{monster.charisma}}&nbsp;</p>
-        <hr class="thicc">
+        <div>
+            <hr class="thicc">
+        </div>
+        <p class="stats low-margin"><strong>STR:</strong> {{monster.strength}}&nbsp;({{getModifierString(monster.strength)}}) <strong>DEX:</strong> {{monster.dexterity}}&nbsp;({{getModifierString(monster.dexterity)}})
+            <strong>CON:</strong> {{monster.constitution}}&nbsp; ({{getModifierString(monster.constitution)}})<strong>INT:</strong> {{monster.intelligence}}&nbsp;({{getModifierString(monster.intelligence)}}) 
+            <strong>WIS:</strong> {{monster.wisdom}}&nbsp;({{getModifierString(monster.wisdom)}})  <strong>CHA:</strong> {{monster.charisma}}&nbsp; ({{getModifierString(monster.charisma)}}) </p>
+            <div>
+                <hr class="thicc">
+            </div>
         <div class="throws-list">
             <strong>Saving Throws:&nbsp;</strong>
             <div *ngFor="let prof of monster.proficiencies"><div *ngIf="isSavingThrow(prof)">{{removeProfType(prof)}} + {{prof.value}}&nbsp;&nbsp;</div></div>
@@ -53,15 +62,20 @@
             <strong>Challenge:&nbsp;</strong> {{monster.challenge_rating}}
         </div>
 
-        <hr class="thicc">
+        <div>
+            <hr class="thicc">
+        </div>
         <div *ngFor="let abil of monster.special_abilities">
+            
             <strong class="ability-title">{{abil.name}}.&nbsp;</strong>
             {{abil.desc}}
         
         </div>
         <br>
         <h3 class="low-margin">Actions</h3>
-        <hr class="thicc">
+        <div>
+            <hr class="thicc">
+        </div>
         <table class="action_table" >
             <tr  class="action_row" *ngFor="let abil of monster.actions">
             <td class="action_name"><strong class="ability-title">{{abil.name}}.&nbsp;</strong></td>
@@ -69,6 +83,7 @@
             </tr>
         
         </table>
+        <br>
         <br>
         <div *ngIf="monster.legendary_actions">
             <h3 class="low-margin">Legendary Actions</h3>
@@ -84,7 +99,7 @@
             
             </table>
         </div>
-        
+    </div>
     </div>
     <div class="modBot">
         <h5>Escape to Close (Esc)</h5>

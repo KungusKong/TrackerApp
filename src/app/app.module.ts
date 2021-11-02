@@ -21,6 +21,7 @@ import { JoinroomComponent } from './IniativeTracker/joinroom/joinroom.component
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog';
 
 //const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 const config: SocketIoConfig = { url: 'http://140.186.141.10:4444', options: {} };
@@ -50,6 +51,7 @@ const config: SocketIoConfig = { url: 'http://140.186.141.10:4444', options: {} 
     MatTooltipModule,
     MatToolbarModule,
     MatInputModule,
+    MatDialogModule,
     SocketIoModule.forRoot(config)
   ],
   providers: [],
