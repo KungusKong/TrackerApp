@@ -34,6 +34,9 @@
               <button matTooltip="Roll Health" [matTooltipPosition]="'below'" [matTooltipShowDelay]="150" (click)="rollHealth()" class="iconButtonB"><mat-icon class="icon">favorite_border</mat-icon></button>
               <button matTooltip="Unlink" [matTooltipPosition]="'below'" [matTooltipShowDelay]="150" (click)="unlink()" class="iconButtonB"><mat-icon class="icon">link_off</mat-icon></button>
             </div>
+            <div class="botButtons" *ngIf="item.url =='none'">
+              <button matTooltip="Roll Initiative" [matTooltipPosition]="'below'" [matTooltipShowDelay]="150" (click)="rollInitiative()" class="iconButtonB"><mat-icon class="icon">sync</mat-icon></button>
+            </div>
           </div>
           </div>
         

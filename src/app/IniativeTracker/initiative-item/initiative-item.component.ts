@@ -147,6 +147,10 @@ export class InitiativeItemComponent implements OnInit {
       this.item.roll = value;
       this.sort();
     }
+    else{
+      this.item.roll = this.diceRoll(20);
+      this.sort();
+    }
 
   }
 
