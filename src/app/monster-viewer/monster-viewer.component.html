@@ -5,12 +5,13 @@
     <span class="input-group-text" id="basic-addon2"><mat-icon>search</mat-icon></span>
   </div>
 </div>
-
+<div class="table-wrapper">
 <table mat-table class="table table-responsive">
-  <ng-container *ngFor="let item of items | monsterFilter: search">
+  <ng-container  *ngFor="let item of items | monsterFilter: search">
   <tr> <td class="list" (click)="selectItem(item)">{{item.name}}</td></tr> 
   <!--<tr *ngIf="items">{{items}}</tr>-->
   </ng-container>
 </table>
+</div>
 
 

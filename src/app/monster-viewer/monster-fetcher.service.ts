@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class MonsterFetcherService {
 
   items: any = [];
+  public monsterList: any =[];
   public selectedMonster: any = {};
   baseURL = "https://www.dnd5eapi.co";
   apiURL = "https://www.dnd5eapi.co/api/monsters/";
@@ -24,7 +25,8 @@ export class MonsterFetcherService {
     //console.log("Service: "+this.items[0]);
     //return this.items;
   });
-  return this.items.results;
+  this.monsterList = this.items.results;
+  return this.monsterList;
   
     //return null;
   }

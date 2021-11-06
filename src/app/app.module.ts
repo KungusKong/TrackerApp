@@ -22,6 +22,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MonsterLookupComponent } from './monster-lookup/monster-lookup/monster-lookup.component';
 
 //const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 const config: SocketIoConfig = { url: 'http://140.186.141.10:4444', options: {} };
@@ -37,7 +38,8 @@ const config: SocketIoConfig = { url: 'http://140.186.141.10:4444', options: {} 
     MonsterViewerComponent,
     MonsterFilterPipe,
     MonsterDetailComponent,
-    JoinroomComponent
+    JoinroomComponent,
+    MonsterLookupComponent
     
     
   ],

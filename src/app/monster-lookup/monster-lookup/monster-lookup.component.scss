@@ -1,0 +1,96 @@
+@import '/src/styles.scss';
+
+.toolbar{
+   
+    background-color: $hover-color;
+    border-bottom: 1px solid black;
+    width: 100%;
+    height: 55px;
+    position: sticky;
+    border-radius: 4px 4px 0px 0px;
+    padding-top: 1px;
+    padding-left: 5px;
+    font-size: 20px;
+    
+    
+}
+.toolbar-row{
+  display: flex;
+  margin: 0px;
+ padding-left: 3px;
+ padding-top: 5px;
+  
+  
+}
+.topButtons{
+    
+    margin-left: auto;
+    margin-right: 35px;
+    margin-top: 5px;
+  }
+
+.closeBtn{
+    width: 25px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    position: fixed;
+    padding: 0px;
+    margin-top: -5px;
+  }
+  .closeBtn:hover{
+    border-radius: 3px;
+    outline: solid white 3px;
+    
+  }
+  .closeIcon{
+    font-size: 30px;
+    margin-top: -2px;
+    margin-left: -6px;
+  }
+  .content{
+      height: 85%;
+      overflow-y: auto;
+      margin-top: 5px;
+  }
+
+  .ulist{
+      list-style-type: none;
+  }
+  .searchbox{
+    background-color: rgb(100, 100, 100);
+    border: none
+  }
+  .searchbox::placeholder{
+    color: white;
+    opacity: 1;
+
+  }
+  .searchbox::-ms-input-placeholder{
+    color: white;
+
+  }
+  .searchItem{
+    font-size: 20px;
+    padding: 3px;
+    padding-left: 8px;
+    border: solid rgb(114, 114, 114) 1px;
+    border-left: none;
+    border-right: none;
+  }
+  .searchItem:hover{
+    background-color: $hover-color;
+    cursor: pointer;
+  }
+
+  .content::-webkit-scrollbar{
+    width: 0.25rem;
+}
+.content::-webkit-scrollbar-track{
+    background: #131313;
+}
+.content::-webkit-scrollbar-thumb{
+    background:grey;
+}

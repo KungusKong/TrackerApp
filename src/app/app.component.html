@@ -5,9 +5,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav" style="font-size: 20px;">
-        <a routerLink="/home" routerLinkActive="active" class="nav-item nav-link" href="#">Home<span class="sr-only"></span></a>
-        <a routerLink="/tracker" routerLinkActive="active" class="nav-item nav-link" href="#">Create</a>
-        <a routerLink="/join" routerLinkActive="active" class="nav-item nav-link" href="#">Join</a>
+        <a routerLink="/home" routerLinkActive="active" class="nav-item nav-link" >Home<span class="sr-only"></span></a>
+        <a routerLink="/tracker" routerLinkActive="active" class="nav-item nav-link" >Create</a>
+        <a routerLink="/join" routerLinkActive="active" class="nav-item nav-link" >Join</a>
         <!--a routerLink="/spellslots" routerLinkActive="active" class="nav-item nav-link" href="#">Spell Slots</a!-->
         
       </div>
@@ -17,7 +17,7 @@
   
 <body class="text-light">
   <div class="d-flex" id="wrapper">
-    <div class="border-end" id="sidebar-wrapper">
+    <div *ngIf="viewerOpen" class="border-end" id="sidebar-wrapper">
       <app-monster-viewer></app-monster-viewer>
 
     </div>
@@ -26,7 +26,7 @@
     <!--Page Content-->
     <div class = "container-fluid">
     
-      <router-outlet></router-outlet>
+      <router-outlet (activate)="refreshViewer()"></router-outlet>
     </div>
   </div>
 

@@ -37,6 +37,9 @@ export class RoomService {
     this.socket.emit('closeRoom', id);
     this.disconnect();
   }
+  reconnect(){
+    this.socket.connect();
+  }
 
 
 

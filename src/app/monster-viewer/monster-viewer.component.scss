@@ -1,4 +1,4 @@
-
+@import '/src/styles.scss';
 .list{
     border-color: black;
     border-width: 1px;
@@ -9,6 +9,7 @@
 }
 .listTitle{
     padding: 3px;
+    margin-top: 8px;
     text-align: center;
 }
 .search-box{
@@ -20,10 +21,13 @@
     display: block;
     width: 100%;
     overflow-x: auto;
-    height: 83vh; 
-    overflow-y: auto;
+    //height: 80vh; 
+    
+    border-bottom: solid #320053 5px;
+    
     .mat-table {
         width: 100%;
+        
         max-width: 100%;
         margin-bottom: 1rem;
         display: table;
@@ -32,13 +36,13 @@
     }
     
   }
-  .table-responsive::-webkit-scrollbar{
+  .table-wrapper::-webkit-scrollbar{
     width: 0.25rem;
 }
-.table-responsive::-webkit-scrollbar-track{
+.table-wrapper::-webkit-scrollbar-track{
     background: #131313;
 }
-.table-responsive::-webkit-scrollbar-thumb{
+.table-wrapper::-webkit-scrollbar-thumb{
     background: grey;
 }
 .form-control{
@@ -48,4 +52,10 @@
 }
 .form-control::placeholder{
     color: rgb(199, 199, 199);
+}
+.table-wrapper{
+    
+    height: calc(95vh - 84px);
+    
+    overflow-y: auto;
 }

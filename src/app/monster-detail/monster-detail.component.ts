@@ -17,7 +17,7 @@ export class MonsterDetailComponent implements OnInit {
   }
 
   constructor(private mservice: MonsterFetcherService, private renderer: Renderer2, public dialogRef: MatDialogRef<MonsterDetailComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
-    console.log(JSON.stringify(this.data.item));
+    
     this.monsterURL = this.data.item.url;
    }
 
@@ -27,7 +27,7 @@ export class MonsterDetailComponent implements OnInit {
   ngOnChanges(): void {
     //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
     //Add '${implements OnChanges}' to the class.
-    console.log(JSON.stringify(this.data.item));
+    
     this.selectMonster(this.data.item.url);
     
   }

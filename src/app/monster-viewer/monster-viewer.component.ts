@@ -35,6 +35,7 @@ export class MonsterViewerComponent implements OnInit {
   }
 
   selectItem(ite: any){
+    console.log(JSON.stringify(ite));
     this.titem = ite;
     console.log("CLICKED: "+ ite.name);
     this.openDialog();

@@ -4,7 +4,8 @@ $toolbar-Color:  rgb(80, 80, 80);
     display: block; /* Hidden by default */
     position: fixed; /* Stay in place */
     /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 55px; /* Location of the box */
+    border-radius: 6px;
     
    
      /* Enable scroll if needed */
@@ -16,7 +17,7 @@ $toolbar-Color:  rgb(80, 80, 80);
     color: white;
     margin: auto;
     
-    outline: 1px solid $base-color;
+    //outline: 1px solid $base-color;
     border: none;
     width: 80%;
     height: 92%;

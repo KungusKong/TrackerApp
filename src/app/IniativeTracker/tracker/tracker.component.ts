@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, OnChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { Tracker } from 'src/app/models/tracker.model';
@@ -19,7 +19,9 @@ start: boolean = false;
 private _trackerSub?: Subscription;
 
 
-  constructor(private roomService: RoomService, private viewerService: MonsterViewerService) { }
+  constructor(private roomService: RoomService, private viewerService: MonsterViewerService) { 
+    this.viewerService.openSearch();
+  }
 
   public spotInOrder = 1;
 
@@ -30,13 +32,16 @@ private _trackerSub?: Subscription;
     this._trackerSub = this.roomService.currentTracker.pipe(startWith({id: '', createdBy:'',turn: 1, round: 1, items: []})).subscribe(tracker=> {
       return this.tracker = tracker;
     });
-    this.viewerService.openSearch();
-    console.log("OPENED TRACKER");
+    
+  }
+  ngOnChanges(): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
   }
   ngOnDestroy(): void {
     if(this._trackerSub)
     this._trackerSub.unsubscribe();
-    this.leave();
+    this.leavewithoutReload();
     this.viewerService.closeSearch();
   }
 
@@ -166,6 +171,10 @@ private _trackerSub?: Subscription;
   leave(){
     this.roomService.closeRoom(this.tracker.id);
     window.location.reload();
+  }
+  leavewithoutReload(){
+    this.roomService.closeRoom(this.tracker.id);
+    this.roomService.reconnect();
   }
 
   

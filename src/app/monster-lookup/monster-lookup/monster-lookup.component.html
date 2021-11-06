@@ -1,0 +1,18 @@
+<div class="toolbar">
+    <div class="toolbar-row">
+        <h2>Monster Selection</h2>
+        <div class="topButtons">
+            <button class="closeBtn" (click)="close()"><mat-icon class="closeIcon">close</mat-icon></button>
+        </div>
+    </div>
+</div>
+<div class="">
+    <input type="text" class="form-control searchbox" placeholder="Search..."   [(ngModel)]="search">
+</div>
+
+<div class="content">
+    <div class="searchItem" *ngFor="let item of monsters | monsterFilter: search" (click)="returnItem(item)">{{item.name}}</div>
+   
+
+</div>
+

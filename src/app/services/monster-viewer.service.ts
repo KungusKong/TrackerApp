@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 })
 export class MonsterViewerService {
 
-  searchOpen = true;
+  searchOpen = false;
 
   constructor() { }
 

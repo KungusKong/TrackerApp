@@ -4,6 +4,24 @@ $base-color: #54008C;
 $hover-color: #42006e;
 $background-color: #1f1f1f;
 $card-color: #353535;
+
+mat-dialog-container {
+    background-color: #131313 !important;
+    padding: 0px 0px 0px 0px !important;
+    color: white !important;
+    border-radius: 6px !important;
+    
+  }
+
+  @media (max-width:700px){
+    .monsterLookup{
+        width: 90%;
+        height: 85%;
+        //background-color: #8b2323 !important;
+        
+      }
+
+  }
 #sidebar-wrapper .sidebar-heading {
     padding: 0.875rem 3rem;
     font-size: 1.2rem;
@@ -18,8 +36,8 @@ $card-color: #353535;
 }
 
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #1f1f1f; }
+//html, body { height: 100%; }
+body {  height: 100vh; margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #1f1f1f; }
 
 body::-webkit-scrollbar{
     width: 0.25rem;
@@ -33,5 +51,13 @@ body::-webkit-scrollbar-thumb{
 
 .modal-content {
     background: transparent;
-  }
+}
 
+  .monsterLookup{
+    width: 50%;
+    height: 80%;
+    
+    //background-color: #8b2323 !important;
+    
+  }
+  
