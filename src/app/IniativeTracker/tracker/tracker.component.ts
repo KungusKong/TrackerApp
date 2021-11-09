@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy, HostListener, OnChanges } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { Tracker } from 'src/app/models/tracker.model';
 import { MonsterViewerService } from 'src/app/services/monster-viewer.service';
 import { RoomService } from 'src/app/services/room.service';
+import { SettingsDialogComponent } from 'src/app/settings-dialog/settings-dialog.component';
 import { InitiativeItem} from '../InitiativeItem';
 
 @Component({
@@ -19,7 +21,7 @@ start: boolean = false;
 private _trackerSub?: Subscription;
 
 
-  constructor(private roomService: RoomService, private viewerService: MonsterViewerService) { 
+  constructor(private roomService: RoomService, private viewerService: MonsterViewerService, public dialog: MatDialog) { 
     this.viewerService.openSearch();
   }
 
@@ -175,6 +177,16 @@ private _trackerSub?: Subscription;
   leavewithoutReload(){
     this.roomService.closeRoom(this.tracker.id);
     this.roomService.reconnect();
+  }
+
+  openSettings(){
+    const dialogRef = this.dialog.open(SettingsDialogComponent, {
+      panelClass:  "settingsDialog"
+    });
+    dialogRef.disableClose = true;
+    dialogRef.afterClosed().subscribe(result =>{
+    });
+
   }
 
   

@@ -3,9 +3,11 @@
 <div class="grid-container">
     <div class="center">
         <h4  *ngIf="!start">Click Create Room to Start</h4>
-        <h3  *ngIf="start">Room Code: {{tracker.id}}</h3>
-        <h5 *ngIf="start">Round: <input type="number" style="width: 50px;"  [(ngModel)]="tracker.round" (ngModelChange)="refreshServer()"></h5>
-        
+        <mat-icon *ngIf="start" (click)="openSettings()" class="settingsBtn inline">settings</mat-icon> 
+        <h3 class="inline"  *ngIf="start">Room Code: {{tracker.id}}</h3>
+        <div class="inline">
+            <h5 *ngIf="start">Round: <input type="number" style="width: 50px;"  [(ngModel)]="tracker.round" (ngModelChange)="refreshServer()"></h5>
+        </div>
         <button  *ngIf="!start" (click)="createRoom()" href="" class="btn btn-primary mb-2">Create Room</button>
         <div class="inline">
             <button *ngIf="start" (click)="addBlankItem()" href="" class="margin specialBtn btn btn-primary">Add</button>

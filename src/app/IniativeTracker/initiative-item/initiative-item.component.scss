@@ -23,11 +23,12 @@ $toolbar-Color:  rgb(80, 80, 80);
 }
 #item-name{
     margin-top: 2px;
-    width: 190px;
+    width: 200px;
     height: 30px;
     border: none;
     background: transparent;
     color: white;
+    padding-bottom: 0px;
     
 }
 .divider{
@@ -202,3 +203,4 @@ $toolbar-Color:  rgb(80, 80, 80);
     margin-right: 5px;
     margin-top: -2px;
  }
+

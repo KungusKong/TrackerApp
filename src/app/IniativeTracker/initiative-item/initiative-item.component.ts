@@ -4,6 +4,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { MonsterDetailComponent } from 'src/app/monster-detail/monster-detail.component';
 import { MonsterFetcherService } from 'src/app/monster-viewer/monster-fetcher.service';
 import { MonsterLookupComponent } from 'src/app/monster-lookup/monster-lookup/monster-lookup.component';
+import { SettingsService } from 'src/app/services/settings.service';
 
 
 @Component({
@@ -68,7 +69,7 @@ export class InitiativeItemComponent implements OnInit {
     this.refresh.emit();
   }
 
-  constructor(private mService: MonsterFetcherService, public dialog: MatDialog) { }
+  constructor(private mService: MonsterFetcherService, private sService: SettingsService, public dialog: MatDialog) { }
 
   async ngOnInit() {
     if(this.item.url != 'none'){
@@ -109,6 +110,21 @@ export class InitiativeItemComponent implements OnInit {
         this.monsterName = result.name;
         this.item.url = result.url;
         this.monster = result.monster;
+        if(this.sService.autoNaming){
+          this.setName();
+        }
+        if(this.sService.autoRollInit){
+          this.rollInitiative();
+        }
+        if(this.sService.acNote){
+          this.addACNote();
+        }
+        if(this.sService.autoAvgHealth){
+          this.setHealth();
+        }
+        if(this.sService.autoRollHealth){
+          this.rollHealth();
+        }
         //console.log("THE MONSTER IS: "+JSON.stringify(result.monster));
       }
      //return result;
@@ -119,6 +135,23 @@ export class InitiativeItemComponent implements OnInit {
     this.monsterName = "none";
     this.item.url = "none";
     this.monster = undefined;
+  }
+  setName(){
+    if(this.monster != undefined){
+      this.item.name = this.monsterName;
+      this.edit();
+    }
+  }
+  addACNote(){
+    if(this.monster != undefined){
+      if(this.item.notes == ""){
+        this.item.notes = "AC: "+this.monster.armor_class;
+      }
+      else{
+      this.item.notes = this.item.notes + "\n AC: "+this.monster.armor_class;
+      }
+      this.edit();
+    }
   }
 
   setHealth(){
