@@ -19,7 +19,7 @@ export class MonsterFetcherService {
   constructor( private http: HttpClient) { }
 
   async getMonstersShort(): Promise<any[]>{
-    await this.http.get(this.apiURL).toPromise().then(data => {console.log(data);
+    await this.http.get(this.apiURL).toPromise().then(data => {
     //this.items = JSON.parse(JSON.stringify(data));
     this.items = data;
     //console.log("Service: "+this.items[0]);
@@ -39,7 +39,6 @@ export class MonsterFetcherService {
       
       //return this.items;
     });
-    console.log("Fetched: "+this.selectedMonster.name);
     return this.selectedMonster;
   }
 

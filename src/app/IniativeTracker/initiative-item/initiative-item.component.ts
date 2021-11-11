@@ -5,6 +5,7 @@ import { MonsterDetailComponent } from 'src/app/monster-detail/monster-detail.co
 import { MonsterFetcherService } from 'src/app/monster-viewer/monster-fetcher.service';
 import { MonsterLookupComponent } from 'src/app/monster-lookup/monster-lookup/monster-lookup.component';
 import { SettingsService } from 'src/app/services/settings.service';
+import { DiceRollerService } from 'src/app/services/dice-roller.service';
 
 
 @Component({
@@ -69,7 +70,7 @@ export class InitiativeItemComponent implements OnInit {
     this.refresh.emit();
   }
 
-  constructor(private mService: MonsterFetcherService, private sService: SettingsService, public dialog: MatDialog) { }
+  constructor(private mService: MonsterFetcherService, private sService: SettingsService, public dialog: MatDialog, private dR: DiceRollerService) { }
 
   async ngOnInit() {
     if(this.item.url != 'none'){
@@ -162,28 +163,14 @@ export class InitiativeItemComponent implements OnInit {
   }
   rollHealth(){
     if(this.monster != undefined){
-       let numDice: number = this.monster.hit_dice.split('d')[0];
-       let sizDice: number = this.monster.hit_dice.split('d')[1];
-       let value = 0;
-       for( let x=0; x<numDice; x++){
-         value += this.diceRoll(sizDice);
-       }
-       value += (this.getModifier(this.monster.constitution) * numDice);
-       this.item.hp = value;
+       this.item.hp = this.dR.rollHealth(this.monster);
        this.edit();
     }
   }
 
   rollInitiative(){
-    if(this.monster != undefined){
-      let value = this.diceRoll(20) + this.getModifier(this.monster.dexterity);
-      this.item.roll = value;
-      this.sort();
-    }
-    else{
-      this.item.roll = this.diceRoll(20);
-      this.sort();
-    }
+    this.item.roll = this.dR.rollInitiative(this.monster);
+    this.sort()
 
   }
 

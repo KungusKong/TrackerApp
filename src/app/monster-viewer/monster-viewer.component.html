@@ -6,9 +6,12 @@
   </div>
 </div>
 <div class="table-wrapper">
-<table mat-table class="table table-responsive">
+<table mat-table class="table">
   <ng-container  *ngFor="let item of items | monsterFilter: search">
-  <tr> <td class="list" (click)="selectItem(item)">{{item.name}}</td></tr> 
+  <tr class="table-row"> <td class="list" (click)="selectItem(item)">{{item.name}} 
+    <button matTooltip="Add to Tracker" [matTooltipPosition]="'below'" [matTooltipShowDelay]="150" *ngIf="inRoom()" 
+    (click)="$event.preventDefault(); $event.stopPropagation(); addToItem(item)" class="iconButton"><mat-icon class="icon">add_circle_outline</mat-icon></button>
+  </td></tr> 
   <!--<tr *ngIf="items">{{items}}</tr>-->
   </ng-container>
 </table>

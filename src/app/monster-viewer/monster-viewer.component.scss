@@ -5,7 +5,12 @@
     padding: 5px;
     background-color: #320053;
     color: white;
-    width: 500px;
+    width: 100%;
+    display: flex;
+}
+.list:hover{
+    background-color: #54008C;
+    cursor: pointer;
 }
 .listTitle{
     padding: 3px;
@@ -36,6 +41,9 @@
     }
     
   }
+.table-row{
+    width: 100%;
+}
   .table-wrapper::-webkit-scrollbar{
     width: 0.25rem;
 }
@@ -58,4 +66,32 @@
     height: calc(95vh - 84px);
     
     overflow-y: auto;
+}
+
+.iconButton{
+    
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    margin-left: auto;
+    margin-right: 5px;
+    margin-top: -10px;
+    border-radius: 3px;
+    border: none;
+    transition-duration: 0.2s;
+    .icon{
+        font-size: 25px;
+        color:  rgb(39, 156, 192);
+        padding: 0px;
+        
+    }
+}
+.iconButton:hover{
+    color: white;
+    .icon{
+        font-size: 25px;
+        color:  rgb(0, 195, 255);
+        padding: 0px;
+    }
 }

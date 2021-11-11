@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable, EventEmitter } from '@angular/core';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,15 +8,21 @@ export class MonsterViewerService {
 
   searchOpen = false;
 
+
   constructor() { }
+
+  invokeTrackerAdd = new EventEmitter();
+  subsVar?: Subscription;
 
   openSearch(){
     this.searchOpen =true;
-    console.log("Search Now Open");
   }
   closeSearch(){
     this.searchOpen = false;
-    console.log("Search Now Closed");
+  }
+
+  onAddFromViewer(monster: any){
+    this.invokeTrackerAdd.emit(monster);
   }
 
 

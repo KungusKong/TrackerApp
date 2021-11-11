@@ -24,6 +24,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MonsterLookupComponent } from './monster-lookup/monster-lookup/monster-lookup.component';
 import { SettingsDialogComponent } from './settings-dialog/settings-dialog.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 //const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 const config: SocketIoConfig = { url: 'http://140.186.141.10:4444', options: {} };
@@ -55,6 +56,7 @@ const config: SocketIoConfig = { url: 'http://140.186.141.10:4444', options: {} 
     MatTooltipModule,
     MatToolbarModule,
     MatInputModule,
+    MatMenuModule,
     MatDialogModule,
     SocketIoModule.forRoot(config)
   ],

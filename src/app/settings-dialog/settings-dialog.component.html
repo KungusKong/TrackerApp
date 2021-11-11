@@ -17,12 +17,13 @@
   <input [(ngModel)]="autoInitRoll" (change)="checkInitRoll($event)" class="checkBox" type="checkbox" id="aRoll">
   <label matTooltip="After linking an item to a monster, automatically rolls the monsters initiative." [matTooltipPosition]="'below'" [matTooltipShowDelay]="600" class="checkLabel" for="aRoll">
       &nbsp;Automatic Initiative Roll</label><br>
+  <input [(ngModel)]="autoAvgHealth" (change)="checkAvgHealth($event)" class="checkBox" type="checkbox" id="AHealth">
+  <label matTooltip="After linking an item to a monster, automatically changes HP to the monsters average Hit Ponts. Can't have this and Automatic Roll Health at the same time." [matTooltipPosition]="'below'" [matTooltipShowDelay]="600" class="checkLabel" for="AHealth">
+        &nbsp;Automatic Average Health</label><br>
   <input [(ngModel)]="autoHealthRoll" (change)="checkHealthRoll($event)" class="checkBox" type="checkbox" id="ARHealth">
   <label matTooltip="After linking an item to a monster, automatically rolls the monsters health. Can't have this and Automatic Average Health at the same time." [matTooltipPosition]="'below'" [matTooltipShowDelay]="600" class="checkLabel" for="ARHealth">
       &nbsp;Automatic Roll Health</label><br>
-  <input [(ngModel)]="autoAvgHealth" (change)="checkAvgHealth($event)" class="checkBox" type="checkbox" id="AHealth">
-  <label matTooltip="After linking an item to a monster, automatically changes HP to the monsters average Hit Ponts. Can't have this and Automatic Roll Health at the same time." [matTooltipPosition]="'below'" [matTooltipShowDelay]="600" class="checkLabel" for="AHealth">
-      &nbsp;Automatic Average Health</label><br>
+  
 
 
 </div>

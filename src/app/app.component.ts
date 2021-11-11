@@ -32,6 +32,5 @@ export class AppComponent {
   refreshViewer(){
     
     this.viewerOpen = this.viewerService.searchOpen;
-    console.log("Viewer: " +this.viewerOpen);
   }
 }

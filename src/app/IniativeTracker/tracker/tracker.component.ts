@@ -3,8 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { Tracker } from 'src/app/models/tracker.model';
+import { MonsterFetcherService } from 'src/app/monster-viewer/monster-fetcher.service';
+import { DiceRollerService } from 'src/app/services/dice-roller.service';
 import { MonsterViewerService } from 'src/app/services/monster-viewer.service';
 import { RoomService } from 'src/app/services/room.service';
+import { SettingsService } from 'src/app/services/settings.service';
 import { SettingsDialogComponent } from 'src/app/settings-dialog/settings-dialog.component';
 import { InitiativeItem} from '../InitiativeItem';
 
@@ -18,11 +21,17 @@ tracker: Tracker = {id: '', createdBy:'',turn: 1,round: 1, items: []};
 items: InitiativeItem [] = [];
 start: boolean = false;
 
+monster: any;
+
 private _trackerSub?: Subscription;
+private _viewSub?: Subscription;
 
 
-  constructor(private roomService: RoomService, private viewerService: MonsterViewerService, public dialog: MatDialog) { 
+  constructor(private roomService: RoomService, 
+    private viewerService: MonsterViewerService, public dialog: MatDialog, private dR: DiceRollerService, 
+    private monsterFetch: MonsterFetcherService, public sService: SettingsService) { 
     this.viewerService.openSearch();
+    
   }
 
   public spotInOrder = 1;
@@ -34,6 +43,9 @@ private _trackerSub?: Subscription;
     this._trackerSub = this.roomService.currentTracker.pipe(startWith({id: '', createdBy:'',turn: 1, round: 1, items: []})).subscribe(tracker=> {
       return this.tracker = tracker;
     });
+    this._viewSub = this.viewerService.invokeTrackerAdd.subscribe((item: any)=> {
+      this.addItemFromViewer(item);
+    });
     
   }
   ngOnChanges(): void {
@@ -43,6 +55,8 @@ private _trackerSub?: Subscription;
   ngOnDestroy(): void {
     if(this._trackerSub)
     this._trackerSub.unsubscribe();
+    if(this._viewSub)
+    this._viewSub.unsubscribe();
     this.leavewithoutReload();
     this.viewerService.closeSearch();
   }
@@ -187,6 +201,43 @@ private _trackerSub?: Subscription;
     dialogRef.afterClosed().subscribe(result =>{
     });
 
+  }
+
+  async addItemFromViewer(item: any){
+    let monster = await this.monsterFetch.getMonsterByURL(item.url);
+    let temp: InitiativeItem={
+      roll: 1,
+      url: "none",
+      name: "Name",
+      hp: 20,
+      order: 1,
+      showMove: false,
+      notes: ""
+    };
+    temp.url = item.url;
+
+    if(this.sService.autoNaming){
+      temp.name = monster.name;
+    }
+    if(this.sService.autoRollInit){
+      temp.roll = this.dR.rollInitiative(monster);
+    }
+    if(this.sService.acNote){
+      temp.notes = "AC: "+ monster.armor_class;
+    }
+    if(this.sService.autoAvgHealth){
+      temp.hp = monster.hit_points;
+    }
+    if(this.sService.autoRollHealth){
+      temp.hp = this.dR.rollHealth(monster);
+    }
+    console.log("NEW ITEM "+ JSON.stringify(temp));
+
+    if(!this.start){
+      this.createRoom();
+    }
+
+    this.addItem(temp);
   }
 
   
