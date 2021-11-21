@@ -65,7 +65,7 @@ export class MonsterDetailComponent implements OnInit {
   getModifierString(stat: number): string{
     let symb = "+";
     if(stat<10){
-      let symb = "";
+       symb = "";
     }
     let value = symb+ this.getModifier(stat);
     return value;

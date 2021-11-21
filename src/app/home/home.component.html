@@ -1,1 +1,20 @@
-<h1>Tracker Project Home</h1>
+<h1 class="pageTitle">Tracker Project Home</h1>
+<div class="flex-container">
+    <div class="flex-div">
+    <img (click)="onClick('/tracker')" class="itemImages" src="assets/TrackerImage.PNG">
+    <hr>
+    <div class="flex-row">
+        <h3>Create a Tracker</h3>
+        <button (click)="onClick('/tracker')" class="buttn">Create</button>
+    </div>
+    </div>
+    <div class="flex-div">
+        <img (click)="onClick('/join')" class="itemImages" src="assets/JoinImage.PNG">
+        <hr>
+        <div class="flex-row">
+            <h3>Join a Tracker</h3>
+            <button (click)="onClick('/join')" class="buttn">Join</button>
+        </div>
+    </div>
+    
+</div>
