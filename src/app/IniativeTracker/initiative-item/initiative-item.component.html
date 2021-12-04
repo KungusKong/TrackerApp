@@ -1,22 +1,23 @@
         <div class="toolbar">
           <div class="toolbar-row">
-           <input (keyup)="edit()" id="item-name"  [(ngModel)]="item.name" placeholder="name">
+           <input (keyup)="edit()" class="item-name" id="item-name"  [(ngModel)]="item.name" placeholder="name">
            <div class="topButtons">
-             <button *ngIf="item.showMove" matTooltip="Move Up" [matTooltipPosition]="'above'" [matTooltipShowDelay]="450"  (click)="moveUpwards()" class="iconButton"><mat-icon class="icon">west</mat-icon></button>
+             <p>{{ac}}</p>
+             <!--button *ngIf="item.showMove" matTooltip="Move Up" [matTooltipPosition]="'above'" [matTooltipShowDelay]="450"  (click)="moveUpwards()" class="iconButton"><mat-icon class="icon">west</mat-icon></button>
              <button matTooltip="Duplicate" [matTooltipPosition]="'above'" [matTooltipShowDelay]="450" (click)="dup()" class="iconButton"><mat-icon class="icon">content_copy</mat-icon></button>
-             <button matTooltip="Remove" [matTooltipPosition]="'above'" [matTooltipShowDelay]="450" (click)="remove()" class="iconButton"><mat-icon class="icon">delete</mat-icon></button>
+             <button matTooltip="Remove" [matTooltipPosition]="'above'" [matTooltipShowDelay]="450" (click)="remove()" class="iconButton"><mat-icon class="icon">delete</mat-icon></button-->
            </div>
           </div>
           
         </div>
         <div class="flexTainer">
           <div class="marg">
-            <label for="item-hp">HP:&nbsp;</label>
-            <input class="inputBox " type="number" id="item-hp"  [(ngModel)]="item.hp" placeholder="HP">
+            <label for="item-hp{{item.order}}">HP:&nbsp;</label>
+            <input class="inputBox item-hp" type="number" id="item-hp{{item.order}}"  [(ngModel)]="item.hp" placeholder="HP">
           </div>
             <div class="marg">
-              <label for="item-roll">Initative:&nbsp;</label>
-              <input class="inputBox" (change)="sort()" type="number" id="item-roll" [(ngModel)]="item.roll" placeholder="Initative">
+              <label for="item-roll{{item.order}}">Initative:&nbsp;</label>
+              <input class="inputBox item-roll" (change)="sort()" type="number" id="item-roll{{item.order}}" [(ngModel)]="item.roll" placeholder="Initative">
             </div>
             <div>
               <label for="item-roll"></label>
@@ -26,20 +27,25 @@
           <div class="toolbar-b">
             <div class="toolbar-row">
             <a (click)="linkClicked()" class="link"><mat-icon matTooltip="Link Monster" [matTooltipPosition]="'below'" [matTooltipShowDelay]="150" *ngIf="item.url =='none'" class="link-icon">link</mat-icon> <div *ngIf="item.url !='none'">{{monsterName}}</div></a>
-            <div class="botButtons" *ngIf="item.url !='none'">
+            <div class="botButtons">
               <!--a (click)="unlink()" class="link"><mat-icon matTooltip="Unlink" [matTooltipPosition]="'below'" [matTooltipShowDelay]="150" class="link-icon link-break" *ngIf="item.url !='none'">favorite</mat-icon></a>
               <a (click)="unlink()" class="link"><mat-icon matTooltip="Unlink" [matTooltipPosition]="'below'" [matTooltipShowDelay]="150" class="link-icon link-break" *ngIf="item.url !='none'">link_off</mat-icon></a-->
-              <button matTooltip="Unlink" [matTooltipPosition]="'below'" [matTooltipShowDelay]="150" [matMenuTriggerFor]="menu" class="iconButtonB"><mat-icon class="icon">more_horiz</mat-icon></button>
+                <button *ngIf="item.showMove" (click)="moveUpwards()" matTooltip="Move Up" [matTooltipPosition]="'below'" [matTooltipShowDelay]="150" class="iconButtonB"><mat-icon class="icon">west</mat-icon></button>
+                <button (click)="dup()" matTooltip="Duplicate" [matTooltipPosition]="'below'" [matTooltipShowDelay]="150" class="iconButtonB"><mat-icon class="icon">content_copy</mat-icon></button>
+                <button (click)="remove()" matTooltip="Delete" [matTooltipPosition]="'below'" [matTooltipShowDelay]="150" class="iconButtonB"><mat-icon class="icon">delete</mat-icon></button>
+              <button matTooltip="Options" [matTooltipPosition]="'below'" [matTooltipShowDelay]="150" [matMenuTriggerFor]="menu" class="iconButtonB"><mat-icon class="icon">more_horiz</mat-icon></button>
               <mat-menu #menu="matMenu" class="menuClass">
                 <button class="menuItem" (click)="rollInitiative()" mat-menu-item>Roll Initiative</button>
+                
+                <ng-container *ngIf="item.url !='none'">
                 <button class="menuItem" (click)="setHealth()" mat-menu-item>Set Health</button>
                 <button class="menuItem" (click)="rollHealth()" mat-menu-item>Roll Health</button>
                 <button class="menuItem" (click)="unlink()" mat-menu-item>Unlink</button>
+                </ng-container>
+                
               </mat-menu>
             </div>
-            <div class="botButtons" *ngIf="item.url =='none'">
-              <button matTooltip="Roll Initiative" [matTooltipPosition]="'below'" [matTooltipShowDelay]="150" (click)="rollInitiative()" class="iconButtonB"><mat-icon class="icon">sync</mat-icon></button>
-            </div>
+            
           </div>
           </div>
         

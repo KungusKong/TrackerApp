@@ -20,6 +20,7 @@ export class TrackerComponent implements OnInit {
 tracker: Tracker = {id: '', createdBy:'',turn: 1,round: 1, items: []};
 items: InitiativeItem [] = [];
 start: boolean = false;
+loading = false;
 
 monster: any;
 
@@ -204,7 +205,9 @@ private _viewSub?: Subscription;
   }
 
   async addItemFromViewer(item: any){
+    this.loading = true;
     let monster = await this.monsterFetch.getMonsterByURL(item.url);
+    this.loading = false;
     let temp: InitiativeItem={
       roll: 1,
       url: "none",
@@ -223,7 +226,7 @@ private _viewSub?: Subscription;
       temp.roll = this.dR.rollInitiative(monster);
     }
     if(this.sService.acNote){
-      temp.notes = "AC: "+ monster.armor_class;
+      //temp.notes = "AC: "+ monster.armor_class;
     }
     if(this.sService.autoAvgHealth){
       temp.hp = monster.hit_points;

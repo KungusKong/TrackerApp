@@ -26,7 +26,7 @@ export class MonsterViewerComponent implements OnInit {
   titem: any;
   search: string = "";
   monsters: Monster_Short[] = [];
-
+  loading = false;
   m: any;
 
   ngOnInit(): void {
@@ -64,7 +64,9 @@ export class MonsterViewerComponent implements OnInit {
   async getMonsters() {
     //this.monsters = this.mService.getMonstersShort(); 
     //this.mService.getMonstersShort().subscribe(monsters => this.monsters = monsters);
+    this.loading =true;
     this.items= await this.mService.getMonstersShort();
+    this.loading = false;
     
     
     //this.ms = this.items[1];
@@ -81,8 +83,10 @@ export class MonsterViewerComponent implements OnInit {
     this.titem = null;
   }
 
-  addToItem(ite: any){
-      this.viewerService.onAddFromViewer(ite);
+   addToItem(ite: any){
+    
+    this.viewerService.onAddFromViewer(ite);
+    
   }
 
   inRoom(): boolean{

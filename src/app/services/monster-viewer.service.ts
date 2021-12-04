@@ -21,8 +21,8 @@ export class MonsterViewerService {
     this.searchOpen = false;
   }
 
-  onAddFromViewer(monster: any){
-    this.invokeTrackerAdd.emit(monster);
+  async onAddFromViewer(monster: any){
+    await this.invokeTrackerAdd.emit(monster);
   }
 
 

@@ -25,9 +25,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MonsterLookupComponent } from './monster-lookup/monster-lookup/monster-lookup.component';
 import { SettingsDialogComponent } from './settings-dialog/settings-dialog.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { NgxLoadingModule } from 'ngx-loading';
 
 //const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
-const config: SocketIoConfig = { url: 'http://140.186.141.10:4444', options: {} };
+const config: SocketIoConfig = { url: 'http://140.186.64.86:4444', options: {} };
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +59,7 @@ const config: SocketIoConfig = { url: 'http://140.186.141.10:4444', options: {} 
     MatInputModule,
     MatMenuModule,
     MatDialogModule,
+    NgxLoadingModule.forRoot({}),
     SocketIoModule.forRoot(config)
   ],
   providers: [],

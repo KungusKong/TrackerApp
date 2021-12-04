@@ -14,7 +14,7 @@
     <p (click)="logTracker()">Room Code: {{tracker.id}}</p>
     <hr>
     <div class="flex-container">
-        <div [class]="nitem.order == tracker.turn ? 'selected': 'standard'" *ngFor="let nitem of tracker.items">
+        <div class="base" [class]="nitem.order == tracker.turn ? 'selected': 'standard'" *ngFor="let nitem of tracker.items">
             {{nitem.name}}
         </div>
     </div>

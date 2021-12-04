@@ -2,15 +2,17 @@
 .selected{
     background-color: $base-color;
     transform: scale(1.1);
-    transition: 0.15s;
 }
 .standard{
     background-color: $card-color ;
-    transition: 0.15s;
+    
     
 }
 .center{ 
     text-align: center;
+}
+.base{
+    transition: all linear 2s;
 }
 
 .flex-container {

@@ -11,6 +11,7 @@ import { MonsterFetcherService } from '../monster-viewer/monster-fetcher.service
 export class MonsterDetailComponent implements OnInit {
 
   monster?: any;
+  loading = false;
   @Input() monsterURL!: any;
   @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(event: KeyboardEvent) {
     this.close();
@@ -43,7 +44,9 @@ export class MonsterDetailComponent implements OnInit {
   }
 
   async selectMonster(url: string){
+    this.loading = true;
     this.monster = await this.mservice.getMonsterByURL(url);
+    this.loading = false;
    
     //console.log("special_abilities	: "+ JSON.stringify(this.monster.legendary_actions	));
 

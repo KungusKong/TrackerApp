@@ -27,6 +27,7 @@ export class InitiativeItemComponent implements OnInit {
   };
 
   monsterName = "none";
+  ac = "AC:10";
 
   monster: any = undefined;
 
@@ -77,6 +78,7 @@ export class InitiativeItemComponent implements OnInit {
       let m= await this.mService.getMonsterByURL(this.item.url);
       this.monsterName = m.name;
       this.monster = m;
+      this.setAC();
     }
   }
 
@@ -111,6 +113,7 @@ export class InitiativeItemComponent implements OnInit {
         this.monsterName = result.name;
         this.item.url = result.url;
         this.monster = result.monster;
+        this.setAC();
         if(this.sService.autoNaming){
           this.setName();
         }
@@ -118,7 +121,7 @@ export class InitiativeItemComponent implements OnInit {
           this.rollInitiative();
         }
         if(this.sService.acNote){
-          this.addACNote();
+          //this.addACNote();
         }
         if(this.sService.autoAvgHealth){
           this.setHealth();
@@ -152,6 +155,11 @@ export class InitiativeItemComponent implements OnInit {
       this.item.notes = this.item.notes + "\n AC: "+this.monster.armor_class;
       }
       this.edit();
+    }
+  }
+  setAC(){
+    if(this.monster != undefined){
+      this.ac = "AC:"+this.monster.armor_class;
     }
   }
 
