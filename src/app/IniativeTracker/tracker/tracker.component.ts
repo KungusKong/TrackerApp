@@ -129,6 +129,7 @@ private _viewSub?: Subscription;
         url: this.items[order-1].url,
         name: this.items[order-1].name,
         hp: this.items[order-1].hp,
+        maxHp: this.items[order-1].maxHp,
         order: this.items[order-1].order,
         showMove: this.items[order-1].showMove,
         notes: this.items[order-1].notes
@@ -158,6 +159,7 @@ private _viewSub?: Subscription;
       url: "none",
       name: "Name",
       hp: 20,
+      maxHp: 20,
       order: 1,
       showMove: false,
       notes: ""
@@ -213,6 +215,7 @@ private _viewSub?: Subscription;
       url: "none",
       name: "Name",
       hp: 20,
+      maxHp: 20,
       order: 1,
       showMove: false,
       notes: ""
@@ -230,9 +233,11 @@ private _viewSub?: Subscription;
     }
     if(this.sService.autoAvgHealth){
       temp.hp = monster.hit_points;
+      temp.maxHp =monster.hit_points;
     }
     if(this.sService.autoRollHealth){
       temp.hp = this.dR.rollHealth(monster);
+      temp.maxHp = temp.hp;
     }
     console.log("NEW ITEM "+ JSON.stringify(temp));
 

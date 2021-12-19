@@ -15,11 +15,30 @@ $toolbar-Color:  rgb(80, 80, 80);
     width: 60px;
 }
 .item-hp{
-    width: 60px !important;
+    width: 45px !important;
+    height: 34px !important;
     color: rgb(248, 59, 59) !important;
-    border-radius: 20px !important;
-    text-align: center !important;
+    border: none !important;
+    text-align: right !important;
 
+}
+.item-hp::-webkit-outer-spin-button,
+.item-hp::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.item-maxHp{
+    width: 45px !important;
+    height: 34px !important;
+    color: rgb(248, 59, 59) !important;
+    border: none !important;
+    text-align: left !important;
+
+}
+.item-maxHp::-webkit-outer-spin-button,
+.item-maxHp::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 .item-name{
     margin-top: 2px !important;
@@ -31,6 +50,17 @@ $toolbar-Color:  rgb(80, 80, 80);
     color: white !important;
     padding-bottom: 0px !important;
     
+}
+#item-name:focus{
+    outline: solid 1px;
+    border-radius: 5px;
+    outline-color: black;
+}
+#item-name:hover{
+    text-decoration: underline;
+    outline: solid 1px;
+    border-radius: 5px;
+    outline-color: white;
 }
 .divider{
     width:5px;
@@ -53,17 +83,7 @@ $toolbar-Color:  rgb(80, 80, 80);
     color: white;
     box-shadow: none;
 }
-#item-name:focus{
-    outline: solid 1px;
-    border-radius: 5px;
-    outline-color: black;
-}
-#item-name:hover{
-    text-decoration: underline;
-    outline: solid 1px;
-    border-radius: 5px;
-    outline-color: white;
-}
+
 .flexTainer{
     display: flex;
     flex-wrap: wrap;

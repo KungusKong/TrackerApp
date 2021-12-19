@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { startWith } from 'rxjs/operators';
-import { Tracker } from 'src/app/models/tracker.model';
 import { RoomService } from 'src/app/services/room.service';
 
 @Component({

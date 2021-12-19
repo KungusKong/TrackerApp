@@ -21,6 +21,7 @@ export class InitiativeItemComponent implements OnInit {
   url: "none",
   name: "Name",
   hp: 20,
+  maxHp: 20,
   order: 1,
   showMove: false,
   notes: ""
@@ -166,12 +167,14 @@ export class InitiativeItemComponent implements OnInit {
   setHealth(){
     if(this.monster != undefined){
       this.item.hp = this.monster.hit_points;
+      this.item.maxHp = this.monster.hit_points;
       this.edit();
     }
   }
   rollHealth(){
     if(this.monster != undefined){
        this.item.hp = this.dR.rollHealth(this.monster);
+       this.item.maxHp = this.item.hp;
        this.edit();
     }
   }
