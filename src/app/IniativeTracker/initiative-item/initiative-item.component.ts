@@ -6,6 +6,7 @@ import { MonsterFetcherService } from 'src/app/monster-viewer/monster-fetcher.se
 import { MonsterLookupComponent } from 'src/app/monster-lookup/monster-lookup/monster-lookup.component';
 import { SettingsService } from 'src/app/services/settings.service';
 import { DiceRollerService } from 'src/app/services/dice-roller.service';
+import { DamageDialogComponent } from '../damage-dialog/damage-dialog.component';
 
 
 @Component({
@@ -133,6 +134,15 @@ export class InitiativeItemComponent implements OnInit {
         //console.log("THE MONSTER IS: "+JSON.stringify(result.monster));
       }
      //return result;
+    });
+  }
+  openDamageMenu(){
+    const dialogRef = this.dialog.open(DamageDialogComponent, {
+      panelClass: "settingsDialog"
+    });
+    dialogRef.afterClosed().subscribe(result =>{
+      this.item.hp -= result;
+      this.edit();
     });
   }
 

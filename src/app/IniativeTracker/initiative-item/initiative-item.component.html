@@ -12,8 +12,12 @@
         </div>
         <div class="flexTainer">
           <div class="marg">
+            <div class="flexTainer">
             <input (change)="edit()" class="inputBox item-hp"  type="number" id="item-hp{{item.order}}"  [(ngModel)]="item.hp" placeholder="HP">&nbsp;/
             <input (change)="edit()" class="inputBox item-maxHp" type="number" id="item-maxHp{{item.order}}"  [(ngModel)]="item.maxHp" placeholder="HP">
+            <div class="break"></div>
+            <button (click)="openDamageMenu()">Dmg</button>
+          </div>
             </div>
             <div class="marg">
               <label for="item-roll{{item.order}}">Initative:&nbsp;</label>

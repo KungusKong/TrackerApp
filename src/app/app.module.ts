@@ -26,6 +26,7 @@ import { MonsterLookupComponent } from './monster-lookup/monster-lookup/monster-
 import { SettingsDialogComponent } from './settings-dialog/settings-dialog.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { NgxLoadingModule } from 'ngx-loading';
+import { DamageDialogComponent } from './IniativeTracker/damage-dialog/damage-dialog.component';
 
 //const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 const config: SocketIoConfig = { url: 'http://140.186.64.86:4444', options: {} };
@@ -43,7 +44,8 @@ const config: SocketIoConfig = { url: 'http://140.186.64.86:4444', options: {} }
     MonsterDetailComponent,
     JoinroomComponent,
     MonsterLookupComponent,
-    SettingsDialogComponent
+    SettingsDialogComponent,
+    DamageDialogComponent
     
     
   ],

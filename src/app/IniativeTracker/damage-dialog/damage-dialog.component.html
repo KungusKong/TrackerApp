@@ -1,0 +1,18 @@
+<div class="toolbar">
+    <div class="toolbar-row">
+        <h2>Damage Creature</h2>
+        <div class="topButtons">
+            <button class="closeBtn" (click)="close()"><mat-icon class="closeIcon">close</mat-icon></button>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+  <input [(ngModel)]="result" class="damageBox" type="number" id="aNaming">
+  <label matTooltip="After linking an item to a monster, automatically changes the name of the item to the monster's name." 
+  [matTooltipPosition]="'below'" [matTooltipShowDelay]="600" class="checkLabel" for="aNaming">
+      &nbsp;Automatic Naming</label><br>
+  
+
+
+</div>
