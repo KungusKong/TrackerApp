@@ -8,11 +8,9 @@
 </div>
 
 <div class="content">
-  <input [(ngModel)]="result" class="damageBox" type="number" id="aNaming">
-  <label matTooltip="After linking an item to a monster, automatically changes the name of the item to the monster's name." 
-  [matTooltipPosition]="'below'" [matTooltipShowDelay]="600" class="checkLabel" for="aNaming">
-      &nbsp;Automatic Naming</label><br>
-  
-
+        <input [(ngModel)]="result" class="inputBox" type="number" id="damageBox"  matTooltip="Amount of Damage/Healing to do" [matTooltipPosition]="'below'" [matTooltipShowDelay]="600"><br>
+        <button class="dmgbtn btn btn-success" (click)="heal()">Heal</button>
+        <button class="dmgbtn btn btn-danger" (click)="dmg()">Damage</button>
+        
 
 </div>

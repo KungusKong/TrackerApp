@@ -87,6 +87,18 @@ $toolbar-Color:  rgb(80, 80, 80);
     color: white;
     box-shadow: none;
 }
+.inputBox:hover{
+    outline: solid white 2px;
+}
+.dmgbtn{
+    padding: 0px;
+    margin-top: -5px;
+    margin-bottom: 0px;
+    border-radius: 5px;
+    font-size: 15px;
+    width: 40px;
+    height: 25px;
+}
 
 .flexTainer{
     display: flex;
@@ -195,7 +207,8 @@ $toolbar-Color:  rgb(80, 80, 80);
 .notes{
     resize: none;
     line-height: 20px;
-    height: 90px;
+    height: 75px;
+    width: 300px;
 }
 .notes::placeholder{
     color: rgb(216, 216, 216);

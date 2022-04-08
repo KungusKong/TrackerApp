@@ -16,7 +16,14 @@ export class DamageDialogComponent implements OnInit {
 
   }
   async close(){
+    this.dialogRef.close(0);
+  }
+
+  async dmg(){
     this.dialogRef.close(this.result);
+  }
+  async heal(){
+    this.dialogRef.close((this.result*-1));
   }
 
 
