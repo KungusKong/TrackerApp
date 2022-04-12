@@ -29,7 +29,7 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { DamageDialogComponent } from './IniativeTracker/damage-dialog/damage-dialog.component';
 
 //const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
-const config: SocketIoConfig = { url: 'http://140.186.64.86:4444', options: {} };
+const config: SocketIoConfig = { url: 'http://192.168.10.1:4444', options: {} };
 @NgModule({
   declarations: [
     AppComponent,
