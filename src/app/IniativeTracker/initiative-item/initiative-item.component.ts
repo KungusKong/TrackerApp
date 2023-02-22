@@ -160,17 +160,17 @@ export class InitiativeItemComponent implements OnInit {
   addACNote(){
     if(this.monster != undefined){
       if(this.item.notes == ""){
-        this.item.notes = "AC: "+this.monster.armor_class;
+        this.item.notes = "AC: "+this.monster.armor_class[0].value;
       }
       else{
-      this.item.notes = this.item.notes + "\n AC: "+this.monster.armor_class;
+      this.item.notes = this.item.notes + "\n AC: "+this.monster.armor_class[0].value;
       }
       this.edit();
     }
   }
   setAC(){
     if(this.monster != undefined){
-      this.ac = "AC:"+this.monster.armor_class;
+      this.ac = "AC:"+this.monster.armor_class[0].value;
     }
   }
 

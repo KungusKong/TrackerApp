@@ -15,7 +15,7 @@
         </div>
         <div class="actual-content">
         
-        <p class="low-margin">Armor Class {{monster.armor_class}}</p>
+        <p class="low-margin">Armor Class {{monster.armor_class[0].value}}</p>
         <p class="low-margin">Hit Ponts {{monster.hit_points}} ({{monster.hit_dice}} +{{getAdditionalHP()}})</p>
         <p class="low-margin">Speed {{monster.speed.walk}}{{monster.speed.climb}}{{monster.speed.burrow}}{{monster.speed.swim}}{{monster.speed.fly}}</p>
         <div>
