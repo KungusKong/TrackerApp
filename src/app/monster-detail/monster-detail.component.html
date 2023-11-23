@@ -85,7 +85,7 @@
         </table>
         <br>
         <br>
-        <div *ngIf="monster.legendary_actions">
+        <div *ngIf="monster.legendary_actions.length > 0">
             <h3 class="low-margin">Legendary Actions</h3>
             <hr class="thicc">
             <p>{{monster.name}} can take 3 legendary actions, choosing from the options below. 
